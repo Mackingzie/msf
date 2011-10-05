@@ -12,6 +12,8 @@
  */
 class forms extends CI_Model {
 
+
+    
     function create_forms_table() {
 
         $query = $this->db->query(

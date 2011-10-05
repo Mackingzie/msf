@@ -1,0 +1,20 @@
+/* 
+    Document   : design
+    Created on : 2011-okt-05, 17:46:46
+    Author     : marcus
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+.questions{
+    border: 1px solid #000;
+}
+

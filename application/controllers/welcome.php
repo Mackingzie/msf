@@ -23,9 +23,9 @@ class Welcome extends CI_Controller {
 	}
 
         public function return_data(){
-            $data['content'] = $this->forms->return_data();
+          $this->forms->create_forms_table();
             
-            $this->load->view('return_data', $data);
+            $this->load->view('create_forms_table');
         }
 }
 

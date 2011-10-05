@@ -22,7 +22,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 
-        public function return_data(){
+        public function create_forms_table(){
           $this->forms->create_forms_table();
             
             $this->load->view('create_forms_table');

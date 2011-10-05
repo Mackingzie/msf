@@ -1,3 +1,15 @@
+<script type="text/javascript">
+$(".question").click(function () {
+  $("id:eq(0)").show("fast", function () {
+    /* use callee so don't have to name the function */
+    $(this).next("dd").show(700, arguments.callee);
+  });
+});
+$(".question").click(function () {
+  $(this).hide(2000);
+});
+
+</script>
 <?php
 echo 'edit/delete not working (need js)';
 echo '<h2>Questions & Labels</h2>';

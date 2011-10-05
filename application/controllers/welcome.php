@@ -55,7 +55,7 @@ class Welcome extends CI_Controller {
 
     public function create_question() {
 
-        $this->load->view('create_question');
+       // $this->load->view('create_question');
     }
 
     public function submit_question() {

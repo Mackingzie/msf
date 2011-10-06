@@ -135,7 +135,7 @@ class questions extends CI_Model{
     function delete_question($id){
         
         $this->db->delete('questions', array('id' => $id));
-
+        return true;
     }
 
     function view_question($id){

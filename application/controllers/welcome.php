@@ -68,7 +68,7 @@ class Welcome extends CI_Controller {
     public function submit_question() {
         if ($_POST['question']) {
             $this->questions->submit_question();
-            $this->load->view('answer_question');
+            redirect('welcome/list_questions');
         } else {
             $this->load->view('create_question');
         }

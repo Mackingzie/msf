@@ -1,12 +1,11 @@
 <?php
-
-
+$i = 0;
 foreach ($content as $item) {
     $item['type'] == 1 ? $sel1 = "TRUE" : $sel1 = '';
     $item['type'] == 2 ? $sel2 = "TRUE" : $sel2 = '';
     $item['type'] == 3 ? $sel3 = "TRUE" : $sel3 = '';
-    
-    
+
+
     echo 'Edit Your question!';
     echo form_open("welcome/update_question/{$item['id']}") . '<br/>';
     echo form_textarea('question', $item['question']) . '<br/>';
@@ -24,20 +23,22 @@ foreach ($content as $item) {
     echo 'Fill answer to question<br/>';
     echo form_textarea('answ', $item['answ']) . '<br/>';
 
-    
+
 
 
     echo '<ul>';
-    $i = 0;
-    foreach ($content[$i]['tags'] as $item) {
-        echo '<li class="label" id="' . $item['id'] . '">' . ' ' . $item['tag'] .'</li>' . anchor("welcome/remove_tag/{$item['id']}", "X");
-        $i++;
+    if ($content[$i]['tags']) {
+        
+        foreach ($content[$i]['tags'] as $item) {
+            echo '<li class="label" id="' . $item['id'] . '">' . ' ' . $item['tag'] . '</li>' . anchor("welcome/remove_tag/{$item['id']}", "X");
+            $i++;
+        }
     }
     echo '</ul>';
 }
 
 
 echo '</dl>';
-echo anchor('welcome/list_questions', 'Abort') .' '. anchor("welcome/delete_question/{$item['id']}", 'Delete'). ' '. form_submit('submit', 'Update Question');
+echo anchor('welcome/list_questions', 'Abort') . ' ' . anchor("welcome/delete_question/{$item['id']}", 'Delete') . ' ' . form_submit('submit', 'Update Question');
 echo form_close();
 ?>

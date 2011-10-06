@@ -50,22 +50,107 @@ class Welcome extends CI_Controller {
     //questions CRUD
     public function list_questions() {
         $data['content'] = $this->questions->list_questions();
+
+        $i = 0;
+        foreach ($data['content'] as $item) {
+            $data['content'][$i]['tags'] = $this->tags->retrieve_question_tags($item['id']);
+            $i++;
+        }
+
         $this->load->view('list_questions', $data);
     }
 
     public function create_question() {
 
-       // $this->load->view('create_question');
+        $this->load->view('create_question');
     }
 
     public function submit_question() {
         if ($_POST['question']) {
             $this->questions->submit_question();
-            $this->load->view('create_question');
+            $this->load->view('answer_question');
         } else {
             $this->load->view('create_question');
         }
     }
+
+    public function edit_question($id = null) {
+
+        if (!$id)
+            $id = $this->uri->segment(3);
+
+        $data['content'] = $this->questions->view_question($id);
+        $i = 0;
+        foreach ($data['content'] as $item) {
+            $data['content'][$i]['tags'] = $this->tags->retrieve_question_tags($item['id']);
+            $i++;
+        }
+        $this->load->view('edit_question', $data);
+    }
+
+    public function update_question() {
+        $id = $this->uri->segment(3);
+
+        if ($this->questions->update_question($id)) {
+            redirect('welcome/list_questions');
+        } else {
+            redirect("welcome/edit_question/$id");
+        }
+    }
+
+    public function delete_question() {
+        $id = $this->uri->segment(3);
+
+        if ($this->questions->delete_question($id)) {
+           
+            $this->tags->delete_tag_question_connections($id);
+            redirect('welcome/list_questions');
+        } else {
+            redirect("welcome/edit_question/$id");
+        }
+    }
+
+    //forms
+    public function list_forms() {
+        $data['content'] = $this->forms->list_forms();
+        
+        $i = 0;
+        foreach ($data['content'] as $item) {
+            $data['content'][$i]['tags'] = $this->tags->retrieve_form_tags($item['id']);
+            $i++;
+        }
+
+        $this->load->view('list_forms', $data);
+    }
+
+    public function create_form() {
+
+        $this->load->view('create_form');
+    }
+
+    public function submit_form() {
+
+        if ($this->forms->create_form()) {
+            redirect('welcome/add_questions_to_form');
+        } else {
+            redirect("welcome/create_form");
+        }
+    }
+
+    public function add_questions_to_form() {
+        $this->load->view('add_questions_to_form');
+    }
+
+    public function submit_questions_to_form() {
+
+        if ($this->forms->submit_questions_to_form()) {
+            redirect('welcome/list_forms');
+        } else {
+            redirect("welcome/add_questions_to_form");
+        }
+    }
+
+
 
 }
 

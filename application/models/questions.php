@@ -90,7 +90,7 @@ class questions extends CI_Model{
         $this->db->insert('questions', $data);
     }
 
-    function edit_question(){
+    function update_question($id){
            $ver_type = null;
 
         $answ = $answ1 = $answ2 = $answ3 = $answ4 = $answ5 = null;
@@ -127,15 +127,22 @@ class questions extends CI_Model{
             'answ5' => $answ5,
         );
 
-
+        $this->db->where('id', $id);
         $this->db->update('questions', $data);
+        return true;
     }
 
-    function delete_question(){
-        $id = $_POST['id'];
+    function delete_question($id){
         
         $this->db->delete('questions', array('id' => $id));
 
+    }
+
+    function view_question($id){
+        
+        $query = $this->db->get_where('questions', array('id' => $id));
+        
+        return $query->result_array();
     }
 }
 ?>

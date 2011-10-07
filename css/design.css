@@ -38,6 +38,7 @@ a:visited, a:active, a{
     overflow-y: scroll;
     overflow-x: hidden;
 }
+/* edit form alignment for questions*/
 #questions dl, #all_questions dl{
     min-height: 26px;
     margin-left: 10px;
@@ -53,20 +54,17 @@ a:visited, a:active, a{
 }
 .questions:nth-child(even), .forms:nth-child(even){
     background: #aaa;
-    border-top: 1px solid #aeaeae;
+    
 }
 .questions:nth-child(odd), .forms:nth-child(odd){
     background: #888;
-    border-top: 1px solid #999;
+    
 }
 .questions>dd{
     height: 0px;
     visibility: hidden;
 }
-.label{
-    background: #99BC99;
-    border-top: 1px solid #999;
-}
+
 .forms li{
     float: left;
     position: relative;
@@ -84,7 +82,19 @@ a:visited, a:active, a{
     position: relative;
 }
 
-#create_question, #create_form, #create_label{
+#create_question, #create_form {
     padding: 10px;
     background: #999;
+}
+#create_label{
+    background: #99BC99;
+    min-height: 36px;
+}
+.label li{
+    float: left;
+    position: relative;
+    margin-left: 10px;
+}
+.label{
+    background: #99BC99;
 }

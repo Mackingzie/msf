@@ -21,7 +21,7 @@ class Welcome extends CI_Controller {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public function index() {
-        $data['include'] = 'start';
+        $data['include'] = 'welcome_message';
 
         $this->load->view('index', $data);
     }
@@ -131,22 +131,21 @@ class Welcome extends CI_Controller {
 
     public function create_form() {
         $data['include'] = __FUNCTION__;
+
+        $data['content']['all_questions'] = $this->questions->list_questions();
+
         $this->load->view('index', $data);
     }
 
     public function submit_form() {
 
         if ($this->forms->create_form()) {
-            redirect('welcome/add_questions_to_form');
+            redirect('welcome/list_forms');
         } else {
             redirect("welcome/create_form");
         }
     }
 
-    public function add_questions_to_form() {
-        $data['include'] = __FUNCTION__;
-        $this->load->view('index', $data);
-    }
 
     public function submit_questions_to_form() {
 
@@ -188,7 +187,7 @@ class Welcome extends CI_Controller {
             redirect("welcome/edit_forms/$id");
         }
     }
-    
+
     public function edit_form($id = null) {
         $data['include'] = __FUNCTION__;
         $data['content'] = $this->forms->view_form($id);

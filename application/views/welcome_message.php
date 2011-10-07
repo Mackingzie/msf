@@ -25,6 +25,7 @@ var timeout	= 500;
 var closetimer	= 0;
 var ddmenuitem	= 0;
 
+
 // open hidden layer
 function mopen(id)
 {

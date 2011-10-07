@@ -1,16 +1,16 @@
 <?php
 echo '<div id="create_label">';
-echo 'Create label';
-echo form_open('welcome/submit_labels').'<br/>';
-echo form_input('label', '').'<br/>';
+echo '<ul class="label">';
+echo "<li>".form_open('welcome/submit_labels').'</li>';
+echo "<li>".form_input('label', '').'</li>';
 
-echo form_radio('type', 'h3', TRUE).'h3<br/>';
-echo form_radio('type', 'h4').'h4<br/>';
-echo form_radio('type', 'cursive').'cursive<br/>';
-echo form_radio('type', 'em').'em<br/>';
+echo "<li>".form_radio('type', 'h3', TRUE).'h3</li>';
+echo "<li>".form_radio('type', 'h4').'h4</li>';
+echo "<li>".form_radio('type', 'cursive').'cursive</li>';
+echo "<li>".form_radio('type', 'em').'em</li>';
 
 
-echo form_submit('submit', 'Add Label');
+echo "<li>".form_submit('submit', 'Add Label').'</li>';
 echo form_close();
-echo '</div>';
+echo '</ul></div>';
 ?>

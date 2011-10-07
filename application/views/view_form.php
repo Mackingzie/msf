@@ -1,14 +1,17 @@
 <?php
-echo '<dl class="create_form"><ul>';
-echo "<li>Title: {$content[0]['title']}</li><br/>";
-echo "<li>Author: {$content[0]['author_id']}</li>";
-echo "<li>Timer: {$content[0]['timer']}</li>";
-echo "<li>Startdate: {$content[0]['active_start']}</li>";
-echo "<li>Enddate: {$content[0]['active_end']}</li></ul>";
+echo '<dl class="create_form">
+    <ul>';
+    echo "<li>Title: {$content[0]['title']}</li><br/>";
+    echo "<li>Author: {$content[0]['author_id']}</li>";
+    echo "<li>Timer: {$content[0]['timer']}</li>";
+    echo "<li>Startdate: {$content[0]['active_start']}</li>";
+    echo "<li>Enddate: {$content[0]['active_end']}</li>
+</ul>";
 
 
 if ($content['tags']) {
-    echo '<ul class="tags">Tags: ';
+    echo 'Tags
+        <ul class="tags">';
     foreach ($content['tags'] as $item) {
         echo '<li class="tag" id="' . $item['id'] . '">'. $item['tag'] . '' . anchor("welcome/remove_tag/{$item['id']}", "&ensp;X").'&ensp;</li>';
     }
@@ -16,7 +19,12 @@ if ($content['tags']) {
 }
 
 
-echo' <ul class="form_menu"><li>' . anchor('welcome/copy_form', 'Create copy'). ' ' . anchor("welcome/edit_form/{$content[0]['id']}", 'Edit') . ' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete') . '</li></ul>';
+echo' <ul class="form_menu">
+            <li>' . anchor("welcome/copy_form/{$content[0]['id']}", 'Create copy')
+            . ' ' . anchor("welcome/edit_form/{$content[0]['id']}", 'Edit')
+            . ' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete')
+        . '</li>
+    </ul>';
 
 //questions
 if ($content['questions']) {

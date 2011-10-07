@@ -146,6 +146,15 @@ class Welcome extends CI_Controller {
         }
     }
 
+    public function copy_form() {
+
+        if ($this->forms->create_form()) {
+            redirect('welcome/edit_form');
+        } else {
+            redirect("welcome/create_form");
+        }
+    }
+
 
     public function submit_questions_to_form() {
 
@@ -212,6 +221,14 @@ class Welcome extends CI_Controller {
         $this->load->view('index', $data);
     }
 
+    public function update_form() {
+
+        if ($this->forms->create_form()) {
+            redirect('welcome/list_forms');
+        } else {
+            redirect("welcome/create_form");
+        }
+    }
     public function delete_form_question_connections($id = null) {
         $id = $this->uri->segment(3);
         $this->questions->delete_form_question_connections($id);

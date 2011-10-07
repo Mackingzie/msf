@@ -30,6 +30,15 @@ class forms extends CI_Model {
         return $query->result_array();
     }
 
+    function copy_form($id) {
+        $data['content'] = $this->forms->view_form($id);
+        
+        
+        $this->db->insert('forms', $data['content']);
+
+        return true;
+    }
+
     function create_form() {
         $form_data = $_POST;
 
@@ -37,6 +46,7 @@ class forms extends CI_Model {
             'author_id' => $form_data['author_id'],
             'title' => $form_data['title'],
             'form_type' => $form_data['form_type'],
+            'timer' => $form_data['timer'],
             'active_start' => $form_data['active_start'],
             'active_end' => $form_data['active_end'],
             'hidden_type' => $form_data['hidden_type']
@@ -44,6 +54,24 @@ class forms extends CI_Model {
 
 
         $this->db->insert('forms', $data);
+
+        return true;
+    }
+    function update_form() {
+        $form_data = $_POST;
+
+        $data = array(
+            'author_id' => $form_data['author_id'],
+            'title' => $form_data['title'],
+            'form_type' => $form_data['form_type'],
+            'active_start' => $form_data['active_start'],
+            'timer' => $form_data['timer'],
+            'active_end' => $form_data['active_end'],
+            'hidden_type' => $form_data['hidden_type']
+        );
+
+
+        $this->db->update('forms', $data);
 
         return true;
     }

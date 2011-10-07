@@ -1,7 +1,7 @@
 
 <?php
 echo '<h2>Questions & Labels</h2>';
-echo anchor('welcome/create_question', 'Create question').'<br/><br/>';
+echo anchor('welcome/create_question', 'Create question').' '.anchor('welcome/create_labels', 'Create label').'<br/><br/>';
 
 $i = 0;
 foreach ($content as $item) {

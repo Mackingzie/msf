@@ -17,7 +17,7 @@ foreach ($content as $item) {
         
         echo'<ul class="form_menu">
                 <li>' . anchor("welcome/view_form/{$item['id']}", 'Show')
-                    . ' ' . anchor('welcome/copy_form', 'Create copy')
+                    . ' ' . anchor("welcome/copy_form/{$item['id']}", 'Create copy')
                     . ' ' . anchor("welcome/edit_form/{$item['id']}", 'Edit')
                     . ' ' . anchor("welcome/delete_form/{$item['id']}", 'Delete')
                 . '</li>

@@ -1,34 +1,39 @@
 <?php
 
 echo '<div id="create_form">';
-echo 'Form preferences';
-echo form_open('welcome/submit_form') . '<br/>';
-echo form_hidden('author_id', '2');
-echo 'Title<br/>';
-echo form_input('title', '') . '<br/>';
-echo "Formtype<br/>";
-echo form_radio('form_type', '1', TRUE) . 'Questioner <br/>';
-echo form_radio('form_type', '2') . 'Regular <br/>';
-echo form_radio('form_type', '3') . 'Exams <br/>';
-echo form_radio('form_type', '4') . 'Email <br/><br/>';
-echo 'Hide<br/>';
-echo form_radio('hidden_type', '1', TRUE) . 'Never <br/>';
-echo form_radio('hidden_type', '2') . 'After Enddate <br/>';
-echo form_radio('hidden_type', '3') . 'Allways <br/>';
 
-echo 'Fill answer alternatives (will automatically be randomized)<br/>';
-echo form_input('timer', date('H:i')) . 'Timer example <i>hours:mins</i><br/>';
-echo form_input('active_start', date('Y-m-d')) . 'Startdate<br/>';
-echo form_input('active_end', date('Y-m-d')) . 'Enddate<br/>';
+    echo 'Form preferences';
+    echo '<ul>';
+    echo '<li>'. form_open('welcome/submit_form') . '</li>';
+    echo '<li>'. form_hidden('author_id', '2') . '</li>';
+    echo 'Title';
+    echo '<li>'. form_input('title', '') . '</li>';
 
-echo anchor('welcome/list_forms', 'Back list') . ' ' . form_submit('submit', 'Save form');
+    echo "Formtype";
+    echo '<li>'. form_radio('form_type', '1', TRUE) . 'Questioner </li>';
+    echo '<li>'. form_radio('form_type', '2') . 'Regular </li>';
+    echo '<li>'. form_radio('form_type', '3') . 'Exams </li>';
+    echo '<li>'. form_radio('form_type', '4') . 'Email </li>';
+    
+    echo 'Hide';
+    echo '<li>'. form_radio('hidden_type', '1', TRUE) . 'Never </li>';
+    echo '<li>'. form_radio('hidden_type', '2') . 'After Enddate </li>';
+    echo '<li>'. form_radio('hidden_type', '3') . 'Allways </li>';
 
+    echo 'Fill answer alternatives (will automatically be randomized)</li>';
+    echo '<li>'. form_input('timer', date('H:i')) . 'Timer example <i>hours:mins</i></li>';
+    echo '<li>'. form_input('active_start', date('Y-m-d')) . 'Startdate</li>';
+    echo '<li>'. form_input('active_end', date('Y-m-d')) . 'Enddate</li>';
+
+    echo '<li>'.anchor('welcome/list_forms', 'Back list') . ' ' . form_submit('submit', 'Save form').'</li>';
+echo '</ul>';
 
 echo '<ul class="tags">Tags: ';
 
 echo '</ul>';
 
 echo '</div>';
+$this->load->view('create_labels');
 //questions
 echo "<div id='questions'>";
 

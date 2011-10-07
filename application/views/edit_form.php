@@ -1,38 +1,52 @@
 <?php
+    $content[0]['form_type'] == 1 ? $sel1 = "TRUE" : $sel1 = '';
+    $content[0]['form_type'] == 2 ? $sel2 = "TRUE" : $sel2 = '';
+    $content[0]['form_type'] == 3 ? $sel3 = "TRUE" : $sel3 = '';
+    $content[0]['form_type'] == 4 ? $sel4 = "TRUE" : $sel4 = '';
+
+    $content[0]['hidden_type'] == 1 ? $hidden1 = "TRUE" : $hidden1 = '';
+    $content[0]['hidden_type'] == 2 ? $hidden2 = "TRUE" : $hidden2 = '';
+    $content[0]['hidden_type'] == 3 ? $hidden3 = "TRUE" : $hidden3 = '';
+
+
 echo '<div id="create_form">';
 echo 'Form preferences';
-echo form_open('welcome/submit_form').'<br/>';
-echo form_hidden('author_id', '2');
+echo form_open('welcome/update_form').'<br/>';
+echo '<li>'. form_hidden('author_id', '2') . '</li>';
 echo 'Title<br/>';
-echo form_input('title', '').'<br/>';
+echo form_input('title', $content[0]['title']).'<br/>';
 echo "Formtype<br/>";
-echo form_radio('form_type', '1', TRUE).'Questioner <br/>';
-echo form_radio('form_type', '2').'Regular <br/>';
-echo form_radio('form_type', '3').'Exams <br/>';
-echo form_radio('form_type', '4').'Email <br/><br/>';
+echo form_radio('form_type', '1', $sel1).'Questioner <br/>';
+echo form_radio('form_type', '2', $sel2).'Regular <br/>';
+echo form_radio('form_type', '3', $sel3).'Exams <br/>';
+echo form_radio('form_type', '4', $sel4).'Email <br/><br/>';
 echo 'Hide<br/>';
-echo form_radio('hidden_type', '1', TRUE).'Never <br/>';
-echo form_radio('hidden_type', '2').'After Enddate <br/>';
-echo form_radio('hidden_type', '3').'Allways <br/>';
+echo form_radio('hidden_type', '1', $hidden1).'Never <br/>';
+echo form_radio('hidden_type', '2', $hidden2).'After Enddate <br/>';
+echo form_radio('hidden_type', '3', $hidden3).'Allways <br/>';
 
 echo 'Fill answer alternatives (will automatically be randomized)<br/>';
-echo form_input('timer', date('H:i')).'Timer example <i>hours:mins</i><br/>';
-echo form_input('active_start', date('Y-m-d')).'Startdate<br/>';
-echo form_input('active_end', date('Y-m-d')).'Enddate<br/>';
+echo form_input('timer', $content[0]['timer']).'Timer example <i>hours:mins</i><br/>';
+echo form_input('active_start', $content[0]['active_start']).'Startdate<br/>';
+echo form_input('active_end', $content[0]['active_end']).'Enddate<br/>';
 
 echo anchor('welcome/list_forms', 'Back list'). ' '.form_submit('submit', 'Save form');
 
 if ($content['tags']) {
-    echo '<ul class="tags">Tags: ';
+    echo 'Tags<ul class="tags">';
     foreach ($content['tags'] as $item) {
-        echo '<li class="tag" id="' . $item['id'] . '">' . ' ' . $item['tag'] . '</li>' . anchor("welcome/remove_tag/{$item['id']}", "X");
+        echo '<li class="tag" id="' . $item['id'] . '">'.$item['tag'] . '&ensp;' . anchor("welcome/remove_tag/{$item['id']}", "X").'&ensp;</li>';
     }
     echo '</ul>';
 }
 
 
-echo' <ul class="form_menu"><li>' . anchor('welcome/copy_form', 'Create copy') . ' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete form') . '</li></ul>';
+echo' <ul class="form_menu"><li>' . anchor("welcome/copy_form/{$content[0]['id']}", 'Create copy') . ' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete form') . '</li></ul>';
 echo '</div>';
+
+$this->load->view('create_labels');
+
+
 //questions
 echo "<div id='questions'>";
 if ($content['questions']) {

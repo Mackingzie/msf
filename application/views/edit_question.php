@@ -26,19 +26,21 @@ foreach ($content as $item) {
 
 
 
-    echo '<ul>';
-    if ($content[$i]['tags']) {
-        
-        foreach ($content[$i]['tags'] as $item) {
-            echo '<li class="label" id="' . $item['id'] . '">' . ' ' . $item['tag'] . '</li>' . anchor("welcome/remove_tag/{$item['id']}", "X");
-            $i++;
-        }
-    }
+     echo 'Tags<ul class="tags">';
+            if ($content[$i]['tags']) {
+                foreach ($content[$i]['tags'] as $item) {
+                    echo '<li class="tag" id="' . $item['id'] . '">' . ' ' . $item['tag'] . '&ensp;</li>';
+                }
+            }
+
     echo '</ul>';
 }
 
 
 echo '</dl>';
+echo "<div id='content_footer'>";
 echo anchor('welcome/list_questions', 'Abort') . ' ' . anchor("welcome/delete_question/{$item['id']}", 'Delete') . ' ' . form_submit('submit', 'Update Question');
 echo form_close();
+echo '</div>';
+
 ?>

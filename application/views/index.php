@@ -12,6 +12,13 @@
         <link href="<?php echo base_url() ?>css/layout.css" rel="stylesheet" />
         <link href="<?php echo base_url() ?>css/design.css" rel="stylesheet" />
         <link href="<?php echo base_url() ?>css/text.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../css/style.css" type="text/css" >
+        <link rel="stylesheet" href="../css/slide.css" type="text/css" >
+        <link rel="stylesheet" href="../css/login_style.css" type="text/css" >
+           <!-- jQuery - the core -->
+	<script src="../js/jquery-1.3.2.min.js" type="text/javascript"></script>
+	<!-- Sliding effect -->
+	<script src="../js/slide.js" type="text/javascript"></script>
 
         <script type="text/javascript">
     $(".question").click(function () {

@@ -23,14 +23,14 @@ foreach ($content as $item) {
             break;
     }
 
-    echo '<ul class="tags">Tags:';
-    if ($content[$i]['tags']) {
-        foreach ($content[$i]['tags'] as $item) {
-            echo '<li class="label" id="' . $item['id'] . '">' . ' ' . $item['tag'] . '</li>' . anchor("welcome/remove_tag/{$item['id']}", "X");
-            $i++;
-        }
-    }
-    echo '</ul>';
+    echo '<ul class="tags">';
+            if ($content[$i]['tags']) {
+                foreach ($content[$i]['tags'] as $item) {
+                    echo '<li class="tag" id="' . $item['id'] . '">' . ' ' . anchor("welcome/sort_forms_by_tag/".$item['tag'], $item['tag']) . '</li>  ';
+                }
+            }
+
+        echo '</ul>';
     echo '</dl>';
 }
 

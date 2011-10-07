@@ -13,8 +13,8 @@
 
 a:visited, a:active, a{
     color: blue;
-    
-    
+
+
 }
 #content_footer{
     clear: both;
@@ -51,21 +51,19 @@ a:visited, a:active, a{
 .questions, .forms, .label{
     border-radius: 15px;
     padding: 5px;
+    min-height: 70px;
 }
-.questions:nth-child(even), .forms:nth-child(even){
+.questions, .forms{
+    margin-bottom: 3px;
     background: #aaa;
-    
-}
-.questions:nth-child(odd), .forms:nth-child(odd){
-    background: #888;
-    
+
 }
 .questions>dd{
     height: 0px;
     visibility: hidden;
 }
 
-.forms li{
+.forms ul li{
     float: left;
     position: relative;
     margin-left: 10px;
@@ -74,8 +72,11 @@ a:visited, a:active, a{
     clear: both;
 }
 .tags{
-    margin-left: 10px;
     clear: both;
+}
+.tags li{
+    float: left;
+    position: relative;
 }
 #header ul{
     float: left;

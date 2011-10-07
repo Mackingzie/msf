@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: localhost
--- Skapad: 06 oktober 2011 kl 18:50
+-- Skapad: 07 oktober 2011 kl 22:08
 -- Serverversion: 5.1.54
 -- PHP-version: 5.3.5-1ubuntu7.2
 
@@ -437,14 +437,15 @@ CREATE TABLE IF NOT EXISTS `forms` (
   `q200` int(10) DEFAULT NULL,
   `qtype200` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Data i tabell `forms`
 --
 
 INSERT INTO `forms` (`id`, `form_type`, `active_start`, `active_end`, `hidden_type`, `author_id`, `created`, `title`, `timer`, `q1`, `qtype1`, `q2`, `qtype2`, `q3`, `qtype3`, `q4`, `qtype4`, `q5`, `qtype5`, `q6`, `qtype6`, `q7`, `qtype7`, `q8`, `qtype8`, `q9`, `qtype9`, `q10`, `qtype10`, `q11`, `qtype11`, `q12`, `qtype12`, `q13`, `qtype13`, `q14`, `qtype14`, `q15`, `qtype15`, `q16`, `qtype16`, `q17`, `qtype17`, `q18`, `qtype18`, `q19`, `qtype19`, `q20`, `qtype20`, `q21`, `qtype21`, `q22`, `qtype22`, `q23`, `qtype23`, `q24`, `qtype24`, `q25`, `qtype25`, `q26`, `qtype26`, `q27`, `qtype27`, `q28`, `qtype28`, `q29`, `qtype29`, `q30`, `qtype30`, `q31`, `qtype31`, `q32`, `qtype32`, `q33`, `qtype33`, `q34`, `qtype34`, `q35`, `qtype35`, `q36`, `qtype36`, `q37`, `qtype37`, `q38`, `qtype38`, `q39`, `qtype39`, `q40`, `qtype40`, `q41`, `qtype41`, `q42`, `qtype42`, `q43`, `qtype43`, `q44`, `qtype44`, `q45`, `qtype45`, `q46`, `qtype46`, `q47`, `qtype47`, `q48`, `qtype48`, `q49`, `qtype49`, `q50`, `qtype50`, `q51`, `qtype51`, `q52`, `qtype52`, `q53`, `qtype53`, `q54`, `qtype54`, `q55`, `qtype55`, `q56`, `qtype56`, `q57`, `qtype57`, `q58`, `qtype58`, `q59`, `qtype59`, `q60`, `qtype60`, `q61`, `qtype61`, `q62`, `qtype62`, `q63`, `qtype63`, `q64`, `qtype64`, `q65`, `qtype65`, `q66`, `qtype66`, `q67`, `qtype67`, `q68`, `qtype68`, `q69`, `qtype69`, `q70`, `qtype70`, `q71`, `qtype71`, `q72`, `qtype72`, `q73`, `qtype73`, `q74`, `qtype74`, `q75`, `qtype75`, `q76`, `qtype76`, `q77`, `qtype77`, `q78`, `qtype78`, `q79`, `qtype79`, `q80`, `qtype80`, `q81`, `qtype81`, `q82`, `qtype82`, `q83`, `qtype83`, `q84`, `qtype84`, `q85`, `qtype85`, `q86`, `qtype86`, `q87`, `qtype87`, `q88`, `qtype88`, `q89`, `qtype89`, `q90`, `qtype90`, `q91`, `qtype91`, `q92`, `qtype92`, `q93`, `qtype93`, `q94`, `qtype94`, `q95`, `qtype95`, `q96`, `qtype96`, `q97`, `qtype97`, `q98`, `qtype98`, `q99`, `qtype99`, `q100`, `qtype100`, `q101`, `qtype101`, `q102`, `qtype102`, `q103`, `qtype103`, `q104`, `qtype104`, `q105`, `qtype105`, `q106`, `qtype106`, `q107`, `qtype107`, `q108`, `qtype108`, `q109`, `qtype109`, `q110`, `qtype110`, `q111`, `qtype111`, `q112`, `qtype112`, `q113`, `qtype113`, `q114`, `qtype114`, `q115`, `qtype115`, `q116`, `qtype116`, `q117`, `qtype117`, `q118`, `qtype118`, `q119`, `qtype119`, `q120`, `qtype120`, `q121`, `qtype121`, `q122`, `qtype122`, `q123`, `qtype123`, `q124`, `qtype124`, `q125`, `qtype125`, `q126`, `qtype126`, `q127`, `qtype127`, `q128`, `qtype128`, `q129`, `qtype129`, `q130`, `qtype130`, `q131`, `qtype131`, `q132`, `qtype132`, `q133`, `qtype133`, `q134`, `qtype134`, `q135`, `qtype135`, `q136`, `qtype136`, `q137`, `qtype137`, `q138`, `qtype138`, `q139`, `qtype139`, `q140`, `qtype140`, `q141`, `qtype141`, `q142`, `qtype142`, `q143`, `qtype143`, `q144`, `qtype144`, `q145`, `qtype145`, `q146`, `qtype146`, `q147`, `qtype147`, `q148`, `qtype148`, `q149`, `qtype149`, `q150`, `qtype150`, `q151`, `qtype151`, `q152`, `qtype152`, `q153`, `qtype153`, `q154`, `qtype154`, `q155`, `qtype155`, `q156`, `qtype156`, `q157`, `qtype157`, `q158`, `qtype158`, `q159`, `qtype159`, `q160`, `qtype160`, `q161`, `qtype161`, `q162`, `qtype162`, `q163`, `qtype163`, `q164`, `qtype164`, `q165`, `qtype165`, `q166`, `qtype166`, `q167`, `qtype167`, `q168`, `qtype168`, `q169`, `qtype169`, `q170`, `qtype170`, `q171`, `qtype171`, `q172`, `qtype172`, `q173`, `qtype173`, `q174`, `qtype174`, `q175`, `qtype175`, `q176`, `qtype176`, `q177`, `qtype177`, `q178`, `qtype178`, `q179`, `qtype179`, `q180`, `qtype180`, `q181`, `qtype181`, `q182`, `qtype182`, `q183`, `qtype183`, `q184`, `qtype184`, `q185`, `qtype185`, `q186`, `qtype186`, `q187`, `qtype187`, `q188`, `qtype188`, `q189`, `qtype189`, `q190`, `qtype190`, `q191`, `qtype191`, `q192`, `qtype192`, `q193`, `qtype193`, `q194`, `qtype194`, `q195`, `qtype195`, `q196`, `qtype196`, `q197`, `qtype197`, `q198`, `qtype198`, `q199`, `qtype199`, `q200`, `qtype200`) VALUES
-(2, 3, '2011-10-06', '2011-10-12', 2, 2, '2011-10-06 18:05:12', 'apans frågor', '00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(2, 3, '2011-10-06', '2011-10-12', 2, 2, '2011-10-06 18:05:12', 'apans frågor', '00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 1, '2011-10-07', '2011-10-07', 1, 2, '2011-10-07 20:02:28', '', '00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -459,12 +460,14 @@ CREATE TABLE IF NOT EXISTS `forms_has_questions` (
   `question_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `form_id` (`form_id`,`question_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Data i tabell `forms_has_questions`
 --
 
+INSERT INTO `forms_has_questions` (`id`, `form_id`, `question_id`) VALUES
+(1, 2, 9);
 
 -- --------------------------------------------------------
 
@@ -475,16 +478,20 @@ CREATE TABLE IF NOT EXISTS `forms_has_questions` (
 DROP TABLE IF EXISTS `forms_has_tags`;
 CREATE TABLE IF NOT EXISTS `forms_has_tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `question_id` int(11) NOT NULL,
+  `form_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `question_id` (`question_id`,`tag_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  UNIQUE KEY `question_id` (`form_id`,`tag_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Data i tabell `forms_has_tags`
 --
 
+INSERT INTO `forms_has_tags` (`id`, `form_id`, `tag_id`) VALUES
+(1, 2, 1),
+(2, 2, 3),
+(3, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -506,7 +513,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `answ4` text,
   `answ5` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Data i tabell `questions`
@@ -514,7 +521,8 @@ CREATE TABLE IF NOT EXISTS `questions` (
 
 INSERT INTO `questions` (`id`, `author_id`, `created`, `question`, `type`, `answ`, `answ1`, `answ2`, `answ3`, `answ4`, `answ5`) VALUES
 (2, 0, '0000-00-00 00:00:00', 'How old am I?', 3, '', '28', '13', '16', '18', '34'),
-(3, 0, '0000-00-00 00:00:00', 'How old am I?', 3, '', '28', '13', '16', '18', '34');
+(9, 0, '2011-10-07 13:44:04', 'How many programlanguages in front end exists', 2, '', '12', '2', '6', '4', '8'),
+(10, 0, '2011-10-07 14:10:58', 'Heading', 4, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -536,8 +544,8 @@ CREATE TABLE IF NOT EXISTS `questions_has_tags` (
 --
 
 INSERT INTO `questions_has_tags` (`id`, `tag_id`, `question_id`) VALUES
-(1, 1, 1),
-(2, 2, 1);
+(1, 1, 9),
+(2, 2, 9);
 
 -- --------------------------------------------------------
 
@@ -592,7 +600,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `tag` varchar(96) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tag` (`tag`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Data i tabell `tags`
@@ -600,7 +608,9 @@ CREATE TABLE IF NOT EXISTS `tags` (
 
 INSERT INTO `tags` (`id`, `tag`) VALUES
 (1, 'label'),
-(2, 'heading');
+(2, 'heading'),
+(3, 'Ad10'),
+(4, 'School');
 
 -- --------------------------------------------------------
 

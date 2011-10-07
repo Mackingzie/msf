@@ -13,6 +13,13 @@
 
 a:visited, a:active, a{
     color: blue;
+    
+    
+}
+#content_footer{
+    clear: both;
+    width: 800px;
+    height: 100px;
 }
 .main_menu{
     margin-top: 70px;
@@ -23,8 +30,21 @@ a:visited, a:active, a{
     margin-left: 5px;
 }
 
-
-
+#questions, #all_questions{
+    width: 500px;
+    min-height: 600px;
+    float: left;
+    margin-top: 10px;
+    
+}
+#questions dl, #all_questions dl{
+    min-height: 26px;
+    margin-left: 10px;
+    margin-bottom: 2px;
+}
+#all_questions{
+    border-left: 1px solid #333;
+}
 .questions, .forms, .label{
     border-radius: 15px;
     padding: 5px;

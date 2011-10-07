@@ -11,10 +11,80 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
-root { 
-    display: block;
+a:visited, a:active, a{
+    color: blue;
+    
+    
 }
-.questions{
-    border: 1px solid #000;
+#content_footer{
+    clear: both;
+    width: 800px;
+    height: 100px;
+}
+.main_menu{
+    margin-top: 70px;
+}
+.main_menu li{
+    float: left;
+    position: relative;
+    margin-left: 5px;
 }
 
+#questions, #all_questions{
+    width: 510px;
+    min-height: 600px;
+    float: left;
+    margin-top: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#questions dl, #all_questions dl{
+    min-height: 26px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+#all_questions{
+    border-left: 1px solid #333;
+}
+.questions, .forms, .label{
+    border-radius: 15px;
+    padding: 5px;
+}
+.questions:nth-child(even), .forms:nth-child(even){
+    background: #aaa;
+    border-top: 1px solid #aeaeae;
+}
+.questions:nth-child(odd), .forms:nth-child(odd){
+    background: #888;
+    border-top: 1px solid #999;
+}
+.questions>dd{
+    height: 0px;
+    visibility: hidden;
+}
+.label{
+    background: #99BC99;
+    border-top: 1px solid #999;
+}
+.forms li{
+    float: left;
+    position: relative;
+    margin-left: 10px;
+}
+.form_menu, .questions_menu{
+    clear: both;
+}
+.tags{
+    margin-left: 10px;
+    clear: both;
+}
+#header ul{
+    float: left;
+    position: relative;
+}
+
+#create_question, #create_form, #create_label{
+    padding: 10px;
+    background: #999;
+}

@@ -17,6 +17,19 @@ class forms extends CI_Model {
         return $query->result_array();
     }
 
+    function delete_form($id){
+
+        $this->db->delete('forms', array('id' => $id));
+        return true;
+    }
+
+    function view_form($id){
+
+        $query = $this->db->get_where('forms', array('id' => $id));
+
+        return $query->result_array();
+    }
+
     function create_form() {
         $form_data = $_POST;
 

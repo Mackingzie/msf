@@ -1,4 +1,5 @@
 <?php
+echo '<div id="create_question">';
 echo 'Add Your question!';
 echo form_open('welcome/submit_question').'<br/>';
 echo form_textarea('question', '').'<br/>';
@@ -18,4 +19,5 @@ echo form_textarea('answ', '').'<br/>';
 
 echo form_submit('submit', 'Add Question');
 echo form_close();
+echo '</div>';
 ?>

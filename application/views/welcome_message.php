@@ -127,57 +127,6 @@ document.onclick = mclose;
 
 </div> <!--panel -->
             
-		<div class="container">
-
-			
-			<div class="header">
-    			
-                        </div>
-
-                    <ul id="sddm">
-    <li><a href="#"
-        onmouseover="mopen('m1')"
-        onmouseout="mclosetime()">Exams</a>
-        <div id="m1"
-            onmouseover="mcancelclosetime()"
-            onmouseout="mclosetime()">
-        <a href="#">Blog</a>
-        <a href="#">Blog</a>
-       
-        </div>
-    </li>
-    <li><a href="#"
-        onmouseover="mopen('m2')"
-        onmouseout="mclosetime()">Evaulation</a>
-        <div id="m2"
-            onmouseover="mcancelclosetime()"
-            onmouseout="mclosetime()">
-        <a href="#">Test</a>
-        
-        </div>
-    </li>
-
-    <li><a href="#"
-        onmouseover="mopen('m3')"
-        onmouseout="mclosetime()">Courses</a>
-        <div id="m3"
-            onmouseover="mcancelclosetime()"
-            onmouseout="mclosetime()">
-        <a href="Test"></a>
-        </div></li>
-      
-        <li><a href="#"
-        onmouseover="mopen('m4')"
-        onmouseout="mclosetime()">Login</a>
-        <div id="m4"
-            onmouseover="mcancelclosetime()"
-            onmouseout="mclosetime()">
-      
-
-        </div>
-    </li>
-    
-      
         
   
 <div style="clear:both"></div>

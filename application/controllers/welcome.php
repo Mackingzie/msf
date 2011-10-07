@@ -159,12 +159,20 @@ class Welcome extends CI_Controller {
 
     public function view_form($id = null) {
         $data['include'] = __FUNCTION__;
-
+        $data['content'] = $this->forms->view_form($id);
         if (!$id)
             $id = $this->uri->segment(3);
+        $i = 0;
+        foreach ($data['content'] as $item) {
+            $data['content']['questions'] = $this->questions->list_questions_by_id($id);
+            $i++;
+        }
 
-            $data['content'] = $this->forms->view_form($id);
+        $i2 = 0;
+        foreach ($data['content'] as $item) {
             $data['content']['tags'] = $this->tags->retrieve_form_tags($id);
+            $i2++;
+        }
 
         $this->load->view('index', $data);
     }
@@ -179,6 +187,12 @@ class Welcome extends CI_Controller {
         } else {
             redirect("welcome/edit_forms/$id");
         }
+    }
+
+    public function delete_form_question_connections($id = null) {
+        $id = $this->uri->segment(3);
+        $this->questions->delete_form_question_connections($id);
+        redirect("welcome/view_form/$id");
     }
 
 }

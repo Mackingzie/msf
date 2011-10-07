@@ -15,7 +15,7 @@ foreach ($content as $item) {
         echo '<ul class="tags">Tags: ';
         if ($content[$i]['tags']) {
             foreach ($content[$i]['tags'] as $item) {
-                echo '<li class="label" id="' . $item['id'] . '">' . ' ' . $item['tag'] . '</li>' . anchor("welcome/remove_tag/{$item['id']}", "X");
+                echo '<li class="tag" id="' . $item['id'] . '">' . ' ' . $item['tag'] . '</li>' . anchor("welcome/remove_tag/{$item['id']}", "X");
                 $i++;
             }
         }

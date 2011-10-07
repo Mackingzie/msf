@@ -16,7 +16,23 @@ class questions extends CI_Model{
         $query = $this->db->get('questions');
         return $query->result_array();
     }
+     function list_questions_by_id($id){
+        $this->db->select('*');
+        $this->db->from('questions');
+        $this->db->where('forms_has_questions.form_id', $id);
+        $this->db->join('forms_has_questions', 'forms_has_questions.question_id = questions.id', 'RIGHT');
 
+        $query = $this->db->get();
+        if($query->result_array()){
+            return $query->result_array();
+        }else{
+            return null;
+        }
+    }
+    function delete_form_question_connections($id){
+
+         $this->db->delete('forms_has_questions', array('question_id' => $id));
+    }
     function submit_question(){
         $ver_type = null;
                

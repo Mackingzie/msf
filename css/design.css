@@ -31,15 +31,17 @@ a:visited, a:active, a{
 }
 
 #questions, #all_questions{
-    width: 500px;
+    width: 510px;
     min-height: 600px;
     float: left;
     margin-top: 10px;
-    
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 #questions dl, #all_questions dl{
     min-height: 26px;
     margin-left: 10px;
+    margin-right: 10px;
     margin-bottom: 2px;
 }
 #all_questions{

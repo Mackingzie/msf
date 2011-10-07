@@ -23,13 +23,14 @@ body, *{
     margin: 0 auto;
     border: 1px solid #f6f6f6;
     width: 1024px;
+    height: 200px;
     min-height: 768px;
 }
 #header{
     float: left;
-    height: 100px;
+    height: 200px;
     width: 1024px;
-    background: #f2f2f2;
+    background: url(../img/msf_header.jpg);
 }
 #content{
     float: left;

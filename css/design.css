@@ -11,11 +11,7 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
-a:visited, a:active, a{
-    color: blue;
 
-
-}
 #content_footer{
     clear: both;
     width: 800px;

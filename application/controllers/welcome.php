@@ -26,6 +26,12 @@ class Welcome extends CI_Controller {
         $this->load->view('index', $data);
     }
 
+    public function login() {
+        redirect('welcome/list_questions');
+    }
+    public function lost_passw() {
+        redirect('welcome/list_questions');
+    }
     //admin functions
     public function create_forms_table() {
 
@@ -147,8 +153,8 @@ class Welcome extends CI_Controller {
     }
 
     public function copy_form() {
-
-        if ($this->forms->create_form()) {
+        $id = $this->uri->segment(3);
+        if ($this->forms->copy_form($id)) {
             redirect('welcome/edit_form');
         } else {
             redirect("welcome/create_form");

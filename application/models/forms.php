@@ -31,25 +31,44 @@ class forms extends CI_Model {
     }
 
     function copy_form($id) {
-        $data['content'] = $this->forms->view_form($id);
         
+        $query = $this->db->get_where('forms', array('id' => $id));
+        $form_data = $query->result_array();
         
-        $this->db->insert('forms', $data['content']);
+        $data = array(
+            'author_id' => $form_data[0]['author_id'],
+            'title' => $form_data[0]['title'],
+            'form_type' => $form_data[0]['form_type'],
+            'timer' => $form_data[0]['timer'],
+            'active_start' => $form_data[0]['active_start'],
+            'active_end' => $form_data[0]['active_end'],
+            'hidden_type' => $form_data[0]['hidden_type']
+        );
+       
+        $i = 1;
+        foreach ($form_data[0] as $item) {
+            if($item['q' . $i]) $data['q' . $i] = $item['q' . $i];
 
+            if($item['qtype' . $i]) $data['qtype' . $i] = $item['qtype' . $i];
+            $i++;
+            if($i == 200) break;
+        }
+        $this->db->insert('forms', $data);
         return true;
+        
     }
 
     function create_form() {
-        $form_data = $_POST;
+        $form_data[0] = $_POST;
 
         $data = array(
-            'author_id' => $form_data['author_id'],
-            'title' => $form_data['title'],
-            'form_type' => $form_data['form_type'],
-            'timer' => $form_data['timer'],
-            'active_start' => $form_data['active_start'],
-            'active_end' => $form_data['active_end'],
-            'hidden_type' => $form_data['hidden_type']
+            'author_id' => $form_data[0]['author_id'],
+            'title' => $form_data[0]['title'],
+            'form_type' => $form_data[0]['form_type'],
+            'timer' => $form_data[0]['timer'],
+            'active_start' => $form_data[0]['active_start'],
+            'active_end' => $form_data[0]['active_end'],
+            'hidden_type' => $form_data[0]['hidden_type']
         );
 
 
@@ -58,16 +77,16 @@ class forms extends CI_Model {
         return true;
     }
     function update_form() {
-        $form_data = $_POST;
+        $form_data[0] = $_POST;
 
         $data = array(
-            'author_id' => $form_data['author_id'],
-            'title' => $form_data['title'],
-            'form_type' => $form_data['form_type'],
-            'active_start' => $form_data['active_start'],
-            'timer' => $form_data['timer'],
-            'active_end' => $form_data['active_end'],
-            'hidden_type' => $form_data['hidden_type']
+            'author_id' => $form_data[0]['author_id'],
+            'title' => $form_data[0]['title'],
+            'form_type' => $form_data[0]['form_type'],
+            'active_start' => $form_data[0]['active_start'],
+            'timer' => $form_data[0]['timer'],
+            'active_end' => $form_data[0]['active_end'],
+            'hidden_type' => $form_data[0]['hidden_type']
         );
 
 
@@ -83,6 +102,7 @@ class forms extends CI_Model {
         foreach ($questions as $item) {
             $data['q' . $i] = $item['q' . $i];
             $data['qtype' . $i] = $item['qtype' . $i];
+            $i++;
         }
 
 

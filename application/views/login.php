@@ -10,7 +10,7 @@
             </div>
             <div class="left">
                 <!-- Login Form -->
-                <form class="clearfix" action="#" method="post">
+                <form class="clearfix" action="login" method="post">
                     <h1>Member Login</h1>
                     <label class="grey" for="log">Username:</label>
                     <input class="field" type="text" name="log" id="log" value="" size="23" />
@@ -19,12 +19,12 @@
                     <label><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" /> &nbsp;Remember me</label>
                     <div class="clear"></div>
                     <input type="submit" name="submit" value="Login" class="bt_login" />
-                    <a class="lost-pwd" href="#">Lost your password?</a>
+                    <a class="lost-pwd" href="lost_passw">Lost your password?</a>
                 </form>
             </div>
             <div class="left right">
                 <!-- Register Form -->
-                <form action="#" method="post">
+                <form action="register" method="post">
                     <h1>Not a member yet? Sign Up!</h1>
                     <label class="grey" for="signup">Username:</label>
                     <input class="field" type="text" name="signup" id="signup" value="" size="23" />

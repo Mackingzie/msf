@@ -8,7 +8,7 @@ echo form_radio('type', 'radiobuttons').'Radiobuttons <br/>';
 echo form_radio('type', 'checkboxes').'Checkboxes <br/>';
 
 echo 'Fill answer alternatives (will automatically be randomized)<br/>';
-echo form_input('answ1', '').'(correct answer)<br/>';
+echo form_input('answ1', '').'<br/>';
 echo form_input('answ2', '').'<br/>';
 echo form_input('answ3', '').'<br/>';
 echo form_input('answ4', '').'<br/>';

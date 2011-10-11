@@ -8,7 +8,7 @@
     $content[0]['hidden_type'] == 2 ? $hidden2 = "TRUE" : $hidden2 = '';
     $content[0]['hidden_type'] == 3 ? $hidden3 = "TRUE" : $hidden3 = '';
 echo '<pre>';
-print_r($content);
+//print_r($content);
 echo '</pre>';
 
 echo '<div id="create_form">';

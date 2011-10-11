@@ -34,18 +34,7 @@ class questions extends CI_Model {
 
     function submit_question() {
         $ver_type = null;
-
-        $answ = $answ1 = $answ2 = $answ3 = $answ4 = $answ5 = null;
-
-
-        $question = $_POST['question'];
-        $answ = $_POST['answ'];
-        $answ1 = $_POST['answ1'];
-        $answ2 = $_POST['answ2'];
-        $answ3 = $_POST['answ3'];
-        $answ4 = $_POST['answ4'];
-        $answ5 = $_POST['answ5'];
-
+       
         $type = $_POST['type'];
         switch ($type) {
             case'text': $ver_type = '1';
@@ -59,16 +48,15 @@ class questions extends CI_Model {
         }
 
         $data = array(
-            'question' => $question,
+            'question' => $_POST['question'],
             'type' => $ver_type,
-            'answ' => $answ,
-            'answ1' => $answ1,
-            'answ2' => $answ2,
-            'answ3' => $answ3,
-            'answ4' => $answ4,
-            'answ5' => $answ5,
-        );
-
+            'answ' => $_POST['answ'],
+            'answ1' => $_POST['answ1'],
+            'answ2' => $_POST['answ2'],
+            'answ3' => $_POST['answ3'],
+            'answ4' => $_POST['answ4'],
+            'answ5' => $_POST['answ5']
+            );
 
         $this->db->insert('questions', $data);
     }

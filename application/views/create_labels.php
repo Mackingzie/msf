@@ -1,6 +1,6 @@
 <?php
 echo '<div id="create_label">';
-echo '<ul class="label">';
+echo '<ul class="Label">';
 echo "<li>".form_open('welcome/submit_labels').'</li>';
 echo "<li>".form_input('label', '').'</li>';
 

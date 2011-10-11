@@ -29,9 +29,11 @@ class Welcome extends CI_Controller {
     public function login() {
         redirect('welcome/list_questions');
     }
+
     public function lost_passw() {
         redirect('welcome/list_questions');
     }
+
     //admin functions
     public function create_forms_table() {
 
@@ -161,21 +163,12 @@ class Welcome extends CI_Controller {
         }
     }
 
-
-    public function submit_questions_to_form() {
-
-        if ($this->forms->submit_questions_to_form()) {
-            redirect('welcome/list_forms');
-        } else {
-            redirect("welcome/add_questions_to_form");
-        }
-    }
-
     public function view_form($id = null) {
         $data['include'] = __FUNCTION__;
         $data['content'] = $this->forms->view_form($id);
         if (!$id)
             $id = $this->uri->segment(3);
+
         $i = 0;
         foreach ($data['content'] as $item) {
             $data['content']['questions'] = $this->questions->list_questions_by_id($id);
@@ -204,37 +197,50 @@ class Welcome extends CI_Controller {
     }
 
     public function edit_form($id = null) {
+
         $data['include'] = __FUNCTION__;
         $data['content'] = $this->forms->view_form($id);
+
         if (!$id)
             $id = $this->uri->segment(3);
-        $i = 0;
+
+        $i = 1;
         foreach ($data['content'] as $item) {
-            $data['content']['questions'] = $this->questions->list_questions_by_id($id);
-            $i++;
-        }
-        foreach ($data['content'] as $item) {
-            $data['content']['all_questions'] = $this->questions->list_questions();
+            while($i < 20){
+            $data['content']['ids'] .= $i;
+            if ($item['q' . $i]) {
+                $id = $item['q' . $i];
+                $data['content']['questions'] = $this->questions->list_questions_by_id($id);
+            }
+            }
             $i++;
         }
 
-        $i2 = 0;
-        foreach ($data['content'] as $item) {
-            $data['content']['tags'] = $this->tags->retrieve_form_tags($id);
-            $i2++;
+        $data['content']['all_questions'] = $this->questions->list_questions();
+
+
+
+
+        foreach ($data['content'][0] as $item) {
+            $data['content']['tags'] = $this->tags->retrieve_form_tags($item['id']);
         }
 
         $this->load->view('index', $data);
     }
 
-    public function update_form() {
+    public function update_form($id = null) {
+        if (!$id)
+            $id = $this->uri->segment(3);
+        $i = 0;
+        $this->forms->submit_questions_to_form($id);
+        if ($this->forms->update_form($id)) {
 
-        if ($this->forms->create_form()) {
             redirect('welcome/list_forms');
         } else {
             redirect("welcome/create_form");
         }
     }
+
     public function delete_form_question_connections($id = null) {
         $id = $this->uri->segment(3);
         $this->questions->delete_form_question_connections($id);

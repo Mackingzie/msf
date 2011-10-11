@@ -1,5 +1,6 @@
 <?php
-/* 
+
+/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -9,33 +10,31 @@
  *
  * @author marcus
  */
-class questions extends CI_Model{
+class questions extends CI_Model {
 
-
-    function list_questions(){
+    function list_questions() {
         $query = $this->db->get('questions');
         return $query->result_array();
     }
-     function list_questions_by_id($id){
-        $this->db->select('*');
-        $this->db->from('questions');
-        $this->db->where('forms_has_questions.form_id', $id);
-        $this->db->join('forms_has_questions', 'forms_has_questions.question_id = questions.id', 'RIGHT');
 
-        $query = $this->db->get();
-        if($query->result_array()){
+    function list_questions_by_id($id) {
+
+            $this->db->select('*');
+            $this->db->from('questions');
+            $this->db->where('questions.id', $id);
+            $query = $this->db->get();
             return $query->result_array();
-        }else{
-            return null;
-        }
+        
     }
-    function delete_form_question_connections($id){
 
-         $this->db->delete('forms_has_questions', array('question_id' => $id));
+    function delete_form_question_connections($id) {
+
+        $this->db->delete('forms_has_questions', array('question_id' => $id));
     }
-    function submit_question(){
+
+    function submit_question() {
         $ver_type = null;
-               
+
         $answ = $answ1 = $answ2 = $answ3 = $answ4 = $answ5 = null;
 
 
@@ -48,15 +47,15 @@ class questions extends CI_Model{
         $answ5 = $_POST['answ5'];
 
         $type = $_POST['type'];
-        switch ($type){
+        switch ($type) {
             case'text': $ver_type = '1';
-            break;
+                break;
 
             case'radiobuttons': $ver_type = '2';
-            break;
-        
+                break;
+
             case'checkboxes': $ver_type = '3';
-            break;
+                break;
         }
 
         $data = array(
@@ -74,40 +73,38 @@ class questions extends CI_Model{
         $this->db->insert('questions', $data);
     }
 
-
-    function submit_labels(){
+    function submit_labels() {
         $ver_type = null;
 
         $question = $_POST['label'];
-        
-                $type = $_POST['type'];
 
-        switch ($type){
+        $type = $_POST['type'];
+
+        switch ($type) {
             case'h3': $ver_type = '4';
-            break;
+                break;
 
             case'h4': $ver_type = '5';
-            break;
+                break;
 
             case'cursive': $ver_type = '6';
-            break;
+                break;
 
             case'em': $ver_type = '7';
-            break;
+                break;
         }
 
         $data = array(
             'question' => $question,
             'type' => $ver_type,
-            
         );
 
 
         $this->db->insert('questions', $data);
     }
 
-    function update_question($id){
-           $ver_type = null;
+    function update_question($id) {
+        $ver_type = null;
 
         $answ = $answ1 = $answ2 = $answ3 = $answ4 = $answ5 = null;
 
@@ -121,15 +118,15 @@ class questions extends CI_Model{
         $answ5 = $_POST['answ5'];
 
         $type = $_POST['type'];
-        switch ($type){
+        switch ($type) {
             case'text': $ver_type = '1';
-            break;
+                break;
 
             case'radiobuttons': $ver_type = '2';
-            break;
+                break;
 
             case'checkboxes': $ver_type = '3';
-            break;
+                break;
         }
 
         $data = array(
@@ -148,17 +145,19 @@ class questions extends CI_Model{
         return true;
     }
 
-    function delete_question($id){
-        
+    function delete_question($id) {
+
         $this->db->delete('questions', array('id' => $id));
         return true;
     }
 
-    function view_question($id){
-        
+    function view_question($id) {
+
         $query = $this->db->get_where('questions', array('id' => $id));
-        
+
         return $query->result_array();
     }
+
 }
+
 ?>

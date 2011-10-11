@@ -26,39 +26,44 @@
     margin-left: 5px;
 }
 
-#questions, #all_questions{
+.column{
     width: 510px;
-    min-height: 600px;
+    min-height: 400px;
     float: left;
     margin-top: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
+    position: relative;
 }
 /* edit form alignment for questions*/
-#questions dl, #all_questions dl{
+.column dl{
     min-height: 26px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 2px;
 }
-#all_questions{
+.dragbox{
+    cursor: move;
+}
+.column  .placeholder{
+	background: #f0f0f0;
+	border:1px dashed #666;
+}
+
+#column1{
     border-left: 1px solid #333;
 }
-.questions, .forms, .label{
+.question, .forms, .label{
     border-radius: 15px;
     padding: 5px;
-    min-height: 70px;
 }
-.questions, .forms{
+.question, .forms{
     margin-bottom: 3px;
     background: #aaa;
-
 }
-.questions>dd{
-    height: 0px;
-    visibility: hidden;
+.dragbox-content{
+    height: auto;
 }
-
 .forms ul li{
     float: left;
     position: relative;

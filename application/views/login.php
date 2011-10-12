@@ -4,8 +4,17 @@
             <div class="left">
 
                 <p class="grey">
-                    Invite Onlyf!</p>
-
+                    <form class="clearfix" action="login" method="post">
+                    <h1>Admin Login</h1>
+                    <label class="grey" for="log">Username:</label>
+                    <input class="field" type="text" name="log" id="admin_log" value="" size="23" />
+                    <label class="grey" for="pwd">Password:</label>
+                    <input class="field" type="password" name="pwd" id="admin_pwd" size="23" />
+                    <label><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" /> &nbsp;Remember me</label>
+                    <div class="clear"></div>
+                    <input type="submit" name="submit" value="Login" class="admin_bt_login" />
+                    <a class="admin_lost-pwd" href="lost_passw">Lost your password?</a>
+                </form>
 
             </div>
             <div class="left">
@@ -26,6 +35,8 @@
                 <!-- Register Form -->
                 <form action="register" method="post">
                     <h1>Not a member yet? Sign Up!</h1>
+                     <label class="grey" for="signup">Social Number:</label>
+                    <input class="field" type="text" name="signup" id="social_number" value="" size="23" />
                     <label class="grey" for="signup">Username:</label>
                     <input class="field" type="text" name="signup" id="signup" value="" size="23" />
                     <label class="grey" for="email">Email:</label>

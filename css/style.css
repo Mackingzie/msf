@@ -1,54 +1,40 @@
-@charset "UTF-8";
-
- html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0;}
-
-/* Css Style Document */
 
 
 
-#main_container {
-    background-color: #414141;
-    overflow: hidden;
-}
 
-body {	
-	
-	
-	text-align: center;
-}
 
-.container {
+
+
+
+#menu {
 	background:url("../img/menu.jpg");
 	width: 960px;
+        height: 40px;
 	margin: auto;
+       
+}
+
+#menu li {
+    float:left;
+    position: relative;
+    margin-left: 5px;
+    margin-top: 13px;
 }
 
 
 
+   
 
 
-.header {
-    background: #000 url("../img/msf_header.jpg") no-repeat top center;
-    width: 960px;
-    height: 200px;
-    margin: auto;
-      
-}
 
-.content {
-        width: 960px;
-	margin: auto;
-        background: blue;
+#header img {
+    float: left;
+    display: block;
+    width: inherit;
+    height: inherit;
 }
 
 
-.footer {
-	width: 960px;
-	float: left;
-	margin-top: 20px;
-	color: #fff;
-	font-size: 75%;
-}
 
 
 

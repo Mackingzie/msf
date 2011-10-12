@@ -167,16 +167,20 @@
     </script>
 </head>
 <body>
+    
     <?php
     $this->load->view('login');
     echo '<div id="site_wrapper">';
-    echo '<div id="header">';
-    $this->load->view('header');
-    echo '</div><div id="content">';
-    $this->load->view($include);
-    echo '</div><div id="footer">';
-    $this->load->view('footer');
-    echo '</div></div>';
+
+        $this->load->view('header');
+        echo '<div id="content">';
+        $this->load->view($include);
+        echo '</div>
+              <div id="footer">';
+        $this->load->view('footer');
+        echo '</div>
+          </div>';
     ?>
+    
 </body>
 </html>

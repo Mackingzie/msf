@@ -17,23 +17,21 @@
     width: 800px;
     height: 100px;
 }
-.main_menu{
-    margin-top: 70px;
-}
-.main_menu li{
-    float: left;
-    position: relative;
-    margin-left: 5px;
-}
+
+
 
 .column{
-    width: 510px;
+    width: 479px;
     min-height: 400px;
+    max-height: 400px;
     float: left;
     margin-top: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
     position: relative;
+    
+    
+    
 }
 /* edit form alignment for questions*/
 .column dl{
@@ -41,6 +39,8 @@
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 2px;
+    
+    
 }
 .dragbox{
     cursor: move;
@@ -50,12 +50,11 @@
 	border:1px dashed #666;
 }
 
-#column1{
-    border-left: 1px solid #333;
-}
+
 .question, .forms, .label{
     border-radius: 15px;
     padding: 5px;
+    background-color: #4F5155;
 }
 .question, .forms{
     margin-bottom: 3px;

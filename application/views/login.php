@@ -12,7 +12,7 @@
                     <input class="field" type="password" name="pwd" id="admin_pwd" size="23" />
                     <label><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" /> &nbsp;Remember me</label>
                     <div class="clear"></div>
-                    <input type="submit" name="submit" value="Login" class="admin_bt_login" />
+                    <input type="submit" name="submit" value="Login" class="bt_login" />
                     <a class="admin_lost-pwd" href="lost_passw">Lost your password?</a>
                 </form>
 

@@ -171,7 +171,7 @@ class Welcome extends CI_Controller {
 
         $i = 0;
         foreach ($data['content'] as $item) {
-            $data['content']['questions'] = $this->questions->list_questions_by_id($id);
+            $data['content']['questions'] = $this->questions->list_questions_by_id($item['id']);
             $i++;
         }
 
@@ -199,26 +199,17 @@ class Welcome extends CI_Controller {
     public function edit_form($id = null) {
 
         $data['include'] = __FUNCTION__;
-        $data['content'] = $this->forms->view_form($id);
-
         if (!$id)
             $id = $this->uri->segment(3);
+         $data['content'] = $this->forms->view_form($id);
+        $i = 0;
+        foreach ($data['content']['q'.$i] as $item) {
+            $qid = $item['q'.$i];
+            $data['content']['questions'] = $this->questions->list_questions_by_id($qid);
+        $i++;
 
-        $i = 1;
-        foreach ($data['content'] as $item) {
-            while($i < 20){
-            $data['content']['ids'] .= $i;
-            if ($item['q' . $i]) {
-                $id = $item['q' . $i];
-                $data['content']['questions'] = $this->questions->list_questions_by_id($id);
-            }
-            }
-            $i++;
         }
-
         $data['content']['all_questions'] = $this->questions->list_questions();
-
-
 
 
         foreach ($data['content'][0] as $item) {
@@ -228,24 +219,22 @@ class Welcome extends CI_Controller {
         $this->load->view('index', $data);
     }
 
+    public function update_questions_to_form() {
+        $id = $this->uri->segment(3);
+        $this->forms->submit_questions_to_form($id);
+    }
+
     public function update_form($id = null) {
         if (!$id)
             $id = $this->uri->segment(3);
-        $i = 0;
-        $this->forms->submit_questions_to_form($id);
-        if ($this->forms->update_form($id)) {
 
+        if ($this->forms->update_form($id)) {
             redirect('welcome/list_forms');
         } else {
             redirect("welcome/create_form");
         }
     }
 
-    public function delete_form_question_connections($id = null) {
-        $id = $this->uri->segment(3);
-        $this->questions->delete_form_question_connections($id);
-        redirect("welcome/view_form/$id");
-    }
 
 }
 

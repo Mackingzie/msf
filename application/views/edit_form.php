@@ -45,13 +45,13 @@ if ($content['tags']) {
 
 echo' <ul class="form_menu"><li>' . anchor("welcome/copy_form/{$content[0]['id']}", 'Create copy') . ' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete form') . '</li></ul>';
 echo '</div>';
-
+$this->load->view('create_question');
 $this->load->view('create_labels');
 
-
+print_r($content['questions']);
 //questions
 echo "<div class='column' id='column1'>";
-if ($content['questions']) {
+if ($content['questions'] != null) {
     foreach ($content['questions'] as $item) {
        
         switch ($item['type']) {

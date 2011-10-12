@@ -148,8 +148,9 @@
                 });
                 //Assign items array to sortorder JSON variable
                 var sortorder = { items: items };
-                
-                var target = $('.form_header').attr('action');
+               console.log(sortorder);
+                var id = $('.form_header').attr('action').match(/([0-9]+)+/g);
+                var target = '/msf/index.php/welcome/update_questions_to_form/'+id;
                
                 //Pass sortorder variable to server using ajax to save state
                 $.post(target, 'data='+$.toJSON(sortorder), function(response){

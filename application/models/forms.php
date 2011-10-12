@@ -103,11 +103,9 @@ class forms extends CI_Model {
        
         foreach ($data->items as $item) {
             $qid = preg_replace('/[^\d\s]/', '', $item->id);
-            $data = array('q'.$item->order => $qid);
+            $data = array('q'.$item->order => $item->id);
             
         }
-
-        
 
        $this->db->where('id', $id);
         $this->db->update('forms', $data);

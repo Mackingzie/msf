@@ -27,10 +27,6 @@ class questions extends CI_Model {
         
     }
 
-    function delete_form_question_connections($id) {
-
-        $this->db->delete('forms_has_questions', array('question_id' => $id));
-    }
 
     function submit_question() {
         $ver_type = null;

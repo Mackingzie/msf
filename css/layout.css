@@ -18,29 +18,36 @@ body, *{
     margin: 0;
     text-decoration: none;
     list-style-type: none;
+
+}
+
+body {
+    background-color:#1A1A1A;
 }
 #site_wrapper{
     margin: 0 auto;
     border: 1px solid #f6f6f6;
-    width: 1024px;
+    width: 960px;
     height: 200px;
     min-height: 768px;
 }
 #header{
     float: left;
     height: 200px;
-    width: 1024px;
+    width:inherit;
     background: url(../img/msf_header.jpg);
 }
 #content{
     float: left;
     min-height: 600px;
-    width: 1024px;
+    
+    width: inherit;
     background: #fff;
+    padding-top: 50px;
 }
 #footer{
     float: left;
     height: 100px;
-    width: 1024px;
+    width:inherit;
     background: #f2f2f2;
 }

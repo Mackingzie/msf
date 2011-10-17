@@ -153,15 +153,15 @@
                 
                 var sortorder = { items: items };
                 if(items.length === 0 || items.length == undefined){
-                            var itemNull = {id: "0", order: "0"}
-                            items.push(itemNull);
-                        }else{
+                    var itemNull = {id: "0", order: "0"}
+                    items.push(itemNull);
+                }else{
                              
-                        }
+                }
                 
                 var id = $('.form_header').attr('action').match(/([0-9]+)+/g);
                 var target = '/msf/index.php/welcome/update_questions_to_form/'+id;
-               console.log(items);
+                console.log(items);
                 //Pass sortorder variable to server using ajax to save state
                 
                 $.post(target, 'data='+$.toJSON(sortorder), function(response){
@@ -174,6 +174,18 @@
                 });
                
             }
+
+
+           
+                //hide the all of the element with class msg_body
+                $(".msg_body").hide();
+                //toggle the componenet with class msg_body
+                $(".msg_head").click(function()
+                {
+                    $(this).next(".msg_body").slideToggle(600);
+                });
+            
+
             //doc ready
         });
         

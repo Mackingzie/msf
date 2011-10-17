@@ -50,12 +50,7 @@ class Welcome extends CI_Controller {
     }
 
     public function submit_labels() {
-        if ($_POST['label']) {
-            $this->questions->submit_labels();
-            redirect('welcome/list_questions');
-        } else {
-            redirect('welcome/create_labels');
-        }
+        $this->questions->submit_labels();
     }
 
     //questions CRUD
@@ -78,12 +73,7 @@ class Welcome extends CI_Controller {
     }
 
     public function submit_question() {
-        if ($_POST['question']) {
             $this->questions->submit_question();
-            redirect('welcome/list_questions');
-        } else {
-            $this->load->view('create_question');
-        }
     }
 
     public function edit_question($id = null) {
@@ -102,25 +92,16 @@ class Welcome extends CI_Controller {
     }
 
     public function update_question() {
-        $id = $this->uri->segment(3);
-
-        if ($this->questions->update_question($id)) {
-            redirect('welcome/list_questions');
-        } else {
-            redirect("welcome/edit_question/$id");
-        }
+        $this->questions->update_question();
     }
 
     public function delete_question() {
         $id = $this->uri->segment(3);
-
         if ($this->questions->delete_question($id)) {
-
             $this->tags->delete_tag_question_connections($id);
             redirect('welcome/list_questions');
-        } else {
-            redirect("welcome/edit_question/$id");
         }
+        
     }
 
     //forms
@@ -146,12 +127,7 @@ class Welcome extends CI_Controller {
     }
 
     public function submit_form() {
-
-        if ($this->forms->create_form()) {
-            redirect('welcome/list_forms');
-        } else {
-            redirect("welcome/create_form");
-        }
+        $this->forms->create_form();
     }
 
     public function copy_form() {
@@ -199,7 +175,7 @@ class Welcome extends CI_Controller {
     public function edit_form() {
         $data['include'] = __FUNCTION__;
         $id = $this->uri->segment(3);
-        
+
         $data['content'] = $this->forms->view_form($id);
         $i = 0;
         foreach ($data['content'][0] as $item_key => $item_value) {
@@ -232,15 +208,8 @@ class Welcome extends CI_Controller {
         $this->forms->submit_questions_to_form($id);
     }
 
-    public function update_form($id = null) {
-        if (!$id)
-            $id = $this->uri->segment(3);
-
-        if ($this->forms->update_form($id)) {
-            redirect('welcome/list_forms');
-        } else {
-            redirect("welcome/create_form");
-        }
+    public function update_form($id) {
+        $this->forms->update_form($id);
     }
 
 }

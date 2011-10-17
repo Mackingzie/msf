@@ -19,10 +19,7 @@ class questions extends CI_Model {
 
     function list_questions_by_id($id) {
 
-            $this->db->select('*');
-            $this->db->from('questions');
-            $this->db->where('questions.id', $id);
-            $query = $this->db->get();
+            $query = $this->db->get_where('questions', array('id' => $id));
             return $query->result_array();
         
     }

@@ -81,16 +81,16 @@ class forms extends CI_Model {
 
     function update_form($id) {
         $form_data[0] = $_POST;
-            $data = array(
-                'author_id' => $form_data[0]['author_id'],
-                'title' => $form_data[0]['title'],
-                'form_type' => $form_data[0]['form_type'],
-                'active_start' => $form_data[0]['active_start'],
-                'timer' => $form_data[0]['timer'],
-                'active_end' => $form_data[0]['active_end'],
-                'hidden_type' => $form_data[0]['hidden_type']
-            );
-        
+        $data = array(
+            'author_id' => $form_data[0]['author_id'],
+            'title' => $form_data[0]['title'],
+            'form_type' => $form_data[0]['form_type'],
+            'active_start' => $form_data[0]['active_start'],
+            'timer' => $form_data[0]['timer'],
+            'active_end' => $form_data[0]['active_end'],
+            'hidden_type' => $form_data[0]['hidden_type']
+        );
+
         $this->db->where('id', $id);
         $this->db->set('forms', $data);
 
@@ -98,16 +98,31 @@ class forms extends CI_Model {
     }
 
     function submit_questions_to_form($id) {
-        
-        $data = json_decode($_POST["data"]);
-       
-        foreach ($data->items as $item) {
-            $qid = preg_replace('/[^\d\s]/', '', $item->id);
-            $data = array('q'.$item->order => $item->id);
-            
-        }
 
-       $this->db->where('id', $id);
+        $data = json_decode($_POST["data"]);
+
+        $i = 1;
+
+        if ($data->items->item->id === 0) {
+            while ($i <= 200) {
+                $data = array('q' . $i => "NULL");
+                $i++;
+            }
+        }/* else {
+            foreach ($data->items as $item) {
+                if ($item->order === $i) {
+                    $qid = preg_replace('/[^\d\s]/', '', $item->id);
+                    $data = array('q' . $item->order => $item->id);
+                } else {
+                    $data = array('q' . $i => NULL);
+                }
+                $i++;
+                if ($i == 200)
+                    break;
+            }
+        }
+*/
+        $this->db->where('id', $id);
         $this->db->update('forms', $data);
     }
 

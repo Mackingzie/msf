@@ -134,9 +134,11 @@
 
             function updateWidgetData(){
                 var items=[];
+                
+                
                 $('#column1').each(function(){
                     $('.dragbox dt', this).each(function(i){
-             
+                        
                         var item = {
                             id: $(this).attr('id'),
                             order : i +1
@@ -147,12 +149,20 @@
                     });
                 });
                 //Assign items array to sortorder JSON variable
+                
                 var sortorder = { items: items };
-               console.log(sortorder);
+                if(items.length === 0 || items.length == undefined){
+                            var itemNull = {id: "0", order: "1"}
+                            items.push(itemNull);
+                        }else{
+                             
+                        }
+                console.log(items);
                 var id = $('.form_header').attr('action').match(/([0-9]+)+/g);
                 var target = '/msf/index.php/welcome/update_questions_to_form/'+id;
                
                 //Pass sortorder variable to server using ajax to save state
+                
                 $.post(target, 'data='+$.toJSON(sortorder), function(response){
                     if(response=="success")
                         var text = $('<div class="success">Saved</div>');
@@ -161,6 +171,7 @@
                         $('.success').fadeOut(1000).remove();
                     }, 2000);
                 });
+               
             }
             //doc ready
         });
@@ -168,20 +179,20 @@
     </script>
 </head>
 <body>
-    
+
     <?php
     $this->load->view('login');
     echo '<div id="site_wrapper">';
 
-        $this->load->view('header');
-        echo '<div id="content">';
-        $this->load->view($include);
-        echo '</div>
+    $this->load->view('header');
+    echo '<div id="content">';
+    $this->load->view($include);
+    echo '</div>
               <div id="footer">';
-        $this->load->view('footer');
-        echo '</div>
+    $this->load->view('footer');
+    echo '</div>
           </div>';
     ?>
-    
+
 </body>
 </html>

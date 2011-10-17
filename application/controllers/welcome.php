@@ -201,17 +201,23 @@ class Welcome extends CI_Controller {
         $data['include'] = __FUNCTION__;
         if (!$id)
             $id = $this->uri->segment(3);
-         $data['content'] = $this->forms->view_form($id);
-        $i = 1;
-        foreach ($data['content'][0] as $item_key=>$item_value) {
-            $quid = ltrim($item_key, "q");
-            echo("<li>".$quid."</li>");
-            #$qid = $item['q'.$i];
-            #$data['content']['questions'] = $this->questions->list_questions_by_id($quid);
-        $i++;
+        $data['content'] = $this->forms->view_form($id);
+        $i = 0;
+        foreach ($data['content'][0] as $item_key => $item_value) {
+            if ($i >= 9) {
+                if ($i % 2) {
+                    if ($item_value) {
 
+                        $data['content']['questions'][] = $this->questions->list_questions_by_id($item_value);
+                    }
+                }
+            }
+            $i++;
         }
-        die;
+        #echo "<pre>";
+        #print_r($data['content']['questions']);
+        #echo "</pre>";
+        #die;
         $data['content']['all_questions'] = $this->questions->list_questions();
 
 
@@ -237,7 +243,6 @@ class Welcome extends CI_Controller {
             redirect("welcome/create_form");
         }
     }
-
 
 }
 

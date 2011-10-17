@@ -196,11 +196,10 @@ class Welcome extends CI_Controller {
         }
     }
 
-    public function edit_form($id = null) {
-
+    public function edit_form() {
         $data['include'] = __FUNCTION__;
-        if (!$id)
-            $id = $this->uri->segment(3);
+        $id = $this->uri->segment(3);
+        
         $data['content'] = $this->forms->view_form($id);
         $i = 0;
         foreach ($data['content'][0] as $item_key => $item_value) {

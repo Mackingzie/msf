@@ -100,28 +100,20 @@ class forms extends CI_Model {
     function submit_questions_to_form($id) {
 
         $data = json_decode($_POST["data"]);
-
         $i = 1;
 
-        if ($data->items->item->id === 0) {
+        foreach ($data->items as $item) {
             while ($i <= 200) {
-                $data = array('q' . $i => "NULL");
-                $i++;
-            }
-        }/* else {
-            foreach ($data->items as $item) {
-                if ($item->order === $i) {
-                    $qid = preg_replace('/[^\d\s]/', '', $item->id);
+                if ($item->order == $i) {
                     $data = array('q' . $item->order => $item->id);
                 } else {
                     $data = array('q' . $i => NULL);
                 }
-                $i++;
-                if ($i == 200)
-                    break;
             }
+            $i++;
         }
-*/
+       
+
         $this->db->where('id', $id);
         $this->db->update('forms', $data);
     }

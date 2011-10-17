@@ -134,7 +134,7 @@
 
             function updateWidgetData(){
                 var items=[];
-                
+                 
                 
                 $('#column1').each(function(){
                     $('.dragbox dt', this).each(function(i){
@@ -146,6 +146,7 @@
                        
                         //Push item object into items array
                         items.push(item);
+                        console.log(items);
                     });
                 });
                 //Assign items array to sortorder JSON variable
@@ -157,7 +158,7 @@
                         }else{
                              
                         }
-                console.log(items);
+                
                 var id = $('.form_header').attr('action').match(/([0-9]+)+/g);
                 var target = '/msf/index.php/welcome/update_questions_to_form/'+id;
                

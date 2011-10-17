@@ -1,8 +1,22 @@
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+  //hide the all of the element with class msg_body
+  $(".msg_body").hide();
+  //toggle the componenet with class msg_body
+  $(".msg_head").click(function()
+  {
+    $(this).next(".msg_body").slideToggle(600);
+  });
+});
+</script>
 
-<?php
-echo '<div id="create_form">';
 
-echo 'Form preferences';
+<div  id="create_form" class="msg_list">
+<p id="create_form" class="msg_head">Create Form</p>
+<div class="msg_body">
+<?php echo 'Form preferences';
 echo '<ul>';
 echo '<li>' . form_open('welcome/submit_form') . '</li>';
 echo '<li>' . form_hidden('author_id', '4') . '</li>';
@@ -32,16 +46,20 @@ echo '<ul class="tags">Tags: ';
 
 echo '</ul>';
 
-echo '</div>';
-$this->load->view('create_labels');
+echo '</div>';?>
+</div>
+<p id="create_label"class="msg_head">Create Label</p>
+<div class="msg_body">
+<?php $this->load->view('create_labels');
 
 //questions
-echo "<div class='column' id='column1'>";
-
-echo '</div>';
 
 
-echo "<div class='column' id='column2'>";
+?>
+</div>
+<p id="column2" class="msg_head">List all questions</p>
+<div class="msg_body">
+<?php 
 echo "Sort by: <a href='#' id='sortQuestions'>Questions</a><a href='#' id='sortLabels'>Labels</a><a href='#' id='sortBoth'>Both</a>";
 if ($content['all_questions']) {
     foreach ($content['all_questions'] as $item) {
@@ -64,8 +82,12 @@ if ($content['all_questions']) {
         }
     }
 }
-echo '</div>';
+echo '</div>';?>
+</div>
+</div>
 
+
+<?php
 echo "<div id='content_footer'>";
 echo form_submit('submit', 'Save form');
 echo form_close();

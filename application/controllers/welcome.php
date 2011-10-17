@@ -202,13 +202,16 @@ class Welcome extends CI_Controller {
         if (!$id)
             $id = $this->uri->segment(3);
          $data['content'] = $this->forms->view_form($id);
-        $i = 0;
-        foreach ($data['content']['q'.$i] as $item) {
-            $qid = $item['q'.$i];
-            $data['content']['questions'] = $this->questions->list_questions_by_id($qid);
+        $i = 1;
+        foreach ($data['content'][0] as $item_key=>$item_value) {
+            $quid = ltrim($item_key, "q");
+            echo("<li>".$quid."</li>");
+            #$qid = $item['q'.$i];
+            #$data['content']['questions'] = $this->questions->list_questions_by_id($quid);
         $i++;
 
         }
+        die;
         $data['content']['all_questions'] = $this->questions->list_questions();
 
 

@@ -1,5 +1,10 @@
 <?php
-
+/*
+echo '<pre>';
+print_r($data);
+echo '</pre>';
+die;
+ */
 $content[0]['form_type'] == 1 ? $sel1 = "TRUE" : $sel1 = '';
 $content[0]['form_type'] == 2 ? $sel2 = "TRUE" : $sel2 = '';
 $content[0]['form_type'] == 3 ? $sel3 = "TRUE" : $sel3 = '';
@@ -8,10 +13,7 @@ $content[0]['form_type'] == 4 ? $sel4 = "TRUE" : $sel4 = '';
 $content[0]['hidden_type'] == 1 ? $hidden1 = "TRUE" : $hidden1 = '';
 $content[0]['hidden_type'] == 2 ? $hidden2 = "TRUE" : $hidden2 = '';
 $content[0]['hidden_type'] == 3 ? $hidden3 = "TRUE" : $hidden3 = '';
-#echo '<pre>';
-#print_r($content);
-#echo '</pre>';
-#die;
+
 echo '<div id="create_form">';
 echo 'Form preferences';
 echo form_open("welcome/update_form/{$content[0]['id']}", 'class="form_header"') . '<br/>';

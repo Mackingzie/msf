@@ -99,23 +99,22 @@ class forms extends CI_Model {
 
     function submit_questions_to_form($id) {
 
-        $data = json_decode($_POST["data"]);
+        $json = json_decode($_POST["data"]);
+
         $i = 1;
+        while ($i <= 200) {
+            foreach ($json->items as $item) {
 
-        foreach ($data->items as $item) {
-            while ($i <= 200) {
                 if ($item->order == $i) {
-                    $data = array('q' . $item->order => $item->id);
-                } else {
-                    $data = array('q' . $i => NULL);
-                }
+                    $data["q$i"] = $item->id;
+                } 
+                $i++;
             }
-            $i++;
+            $data["q$i"] = NULL;
+             $i++;
         }
-       
 
-        $this->db->where('id', $id);
-        $this->db->update('forms', $data);
+        $this->db->update('forms', $data, array('id' => $id));
     }
 
     function create_forms_table() {

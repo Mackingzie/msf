@@ -21,6 +21,7 @@
             });
             return false;
         });
+        
     });
 </script>
 <?php

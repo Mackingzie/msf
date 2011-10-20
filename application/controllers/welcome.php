@@ -119,6 +119,7 @@ class Welcome extends CI_Controller {
     }
 
     public function create_form() {
+        $data['content']['questions'] = null;
         $data['include'] = __FUNCTION__;
 
         $data['content']['all_questions'] = $this->questions->list_questions();
@@ -131,30 +132,59 @@ class Welcome extends CI_Controller {
     }
 
     public function copy_form() {
+        $data['include'] ="edit_form";
         $id = $this->uri->segment(3);
-        if ($this->forms->copy_form($id)) {
-            redirect('welcome/edit_form');
-        } else {
-            redirect("welcome/create_form");
+        if (!$this->forms->copy_form($id)) {
+            redirect("list_form");
         }
+     
+        $data['content'] = $this->forms->view_form($id);
+        $i = 0;
+        foreach ($data['content'][0] as $item_key => $item_value) {
+            if ($i >= 9) {
+                if ($i % 2) {
+                    if ($item_value) {
+
+                        $data['content']['questions'][] = $this->questions->list_questions_by_id($item_value);
+                    }
+                }
+            }
+            $i++;
+        }
+        
+        $data['content']['all_questions'] = $this->questions->list_questions();
+
+
+        foreach ($data['content'][0] as $item) {
+            $data['content']['tags'] = $this->tags->retrieve_form_tags($item['id']);
+        }
+        $this->load->view("index", $data);
     }
 
     public function view_form($id = null) {
+        $data['content']['questions'] = null;
         $data['include'] = __FUNCTION__;
-        $data['content'] = $this->forms->view_form($id);
-        if (!$id)
-            $id = $this->uri->segment(3);
+        if(!$id) $id = $this->uri->segment(3);
 
+        $data['content'] = $this->forms->view_form($id);
         $i = 0;
-        foreach ($data['content'] as $item) {
-            $data['content']['questions'] = $this->questions->list_questions_by_id($item['id']);
+        foreach ($data['content'][0] as $item_key => $item_value) {
+            if ($i >= 9) {
+                if ($i % 2) {
+                    if ($item_value) {
+
+                        $data['content']['questions'][] = $this->questions->list_questions_by_id($item_value);
+                    }
+                }
+            }
             $i++;
         }
+        
+        $data['content']['all_questions'] = $this->questions->list_questions();
 
-        $i2 = 0;
-        foreach ($data['content'] as $item) {
-            $data['content']['tags'] = $this->tags->retrieve_form_tags($id);
-            $i2++;
+
+        foreach ($data['content'][0] as $item) {
+            $data['content']['tags'] = $this->tags->retrieve_form_tags($item['id']);
         }
 
         $this->load->view('index', $data);
@@ -172,10 +202,10 @@ class Welcome extends CI_Controller {
         }
     }
 
-    public function edit_form() {
+    public function edit_form($id) {
         $data['include'] = __FUNCTION__;
-        $id = $this->uri->segment(3);
-
+        if(!$id) $id = $this->uri->segment(3);
+        
         $data['content'] = $this->forms->view_form($id);
         $i = 0;
         foreach ($data['content'][0] as $item_key => $item_value) {
@@ -189,10 +219,7 @@ class Welcome extends CI_Controller {
             }
             $i++;
         }
-        #echo "<pre>";
-        #print_r($data['content']['questions']);
-        #echo "</pre>";
-        #die;
+        
         $data['content']['all_questions'] = $this->questions->list_questions();
 
 

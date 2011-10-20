@@ -13,7 +13,7 @@
 
     <meta name="author" content="Meias" />
 <head>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    
     <link href="<?php echo base_url() ?>css/layout.css" rel="stylesheet" />
     <link href="<?php echo base_url() ?>css/design.css" rel="stylesheet" />
     <link href="<?php echo base_url() ?>css/text.css" rel="stylesheet" />
@@ -171,6 +171,7 @@
                     setTimeout(function(){
                         $('.success').fadeOut(1000).remove();
                     }, 2000);
+                    return false;
                 });
                
             }

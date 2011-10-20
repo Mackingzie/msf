@@ -1,24 +1,20 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#question_submit").click(function(){
-            var question = $("input[name=question]").val();
-            var type = $("input[name=type]:radio:checked").val();
+            var question = $("textarea[name=question]").val();
+            var type =  $("input[name=type]:radio:checked").val();
             var answ1 = $("input[name=answ1]").val();
             var answ2 = $("input[name=answ2]").val();
             var answ3 = $("input[name=answ3]").val();
             var answ4 = $("input[name=answ4]").val();
             var answ5 = $("input[name=answ5]").val();
-            var answ = $("input[name=answ]").val();
-           
-            var target = '/msf/index.php/welcome/submit_question';
-            console.log(target);
-                
+            var answ =  $("textarea[name=answ]").val();
+            
             $.ajax({
                 type: "POST",
-                url: target,
+                url: '/msf/index.php/welcome/submit_question',
                 dataType: "json",
-                data: "question="+question+"&type="+type+"&answ1="+answ1+"&answ2="+answ2+"&answ3="+answ3+"&answ4="+answ4+"&answ5="+answ5+"&answ="+answ,
-                cache:false
+                data: "question="+question+"&type="+type+"&answ1="+answ1+"&answ2="+answ2+"&answ3="+answ3+"&answ4="+answ4+"&answ5="+answ5+"&answ="+answ
             });
             return false;
         });
@@ -28,7 +24,7 @@
 echo '<div id="create_question">';
 echo 'Add Your question!';
 echo form_open('welcome/submit_question').'<br/>';
-echo form_textarea('question', '').'<br/>';
+echo form_textarea('question', '', 'id="apa"').'<br/>';
 echo form_radio('type', 'text', TRUE).'Text <br/>';
 echo form_radio('type', 'radiobuttons').'Radiobuttons <br/>';
 echo form_radio('type', 'checkboxes').'Checkboxes <br/>';

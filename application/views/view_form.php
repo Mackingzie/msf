@@ -49,18 +49,18 @@ echo' <ul class="form_menu"><li>' . anchor("welcome/edit_form/{$content[0]['id']
 echo '</div>';
 
 
-echo "<div><dl>";
+echo "<div id='questions_view'><dl>";
 if ($content['questions']) {
     foreach ($content['questions'] as $key) {
         foreach ($key as $item) {
            
 
             switch ($item['type']) {
-                case '1': echo '<dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt><dd>' . $item['answ'] . '</dd>';
+                case '1': echo '<dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt><dd>' . form_input() . '</dd>';
                     break;
-                case '2': echo '<dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt><dd><ul><li>' . $item['answ1'] . '</li><li>' . $item['answ2'] . '</li><li>' . $item['answ3'] . '</li><li>' . $item['answ4'] . '</li><li>' . $item['answ5'] . '</li></dd>';
+                case '2': echo '<dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt><dd><ul><li>' . form_radio().$item['answ1'] . '</li><li>' . form_radio().$item['answ2'] . '</li><li>' . form_radio().$item['answ3'] . '</li><li>' . form_radio().$item['answ4'] . '</li><li>' . form_radio().$item['answ5'] . '</li></dd>';
                     break;
-                case '3': echo '<dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt><dd><ul><li>' . $item['answ1'] . '</li><li>' . $item['answ2'] . '</li><li>' . $item['answ3'] . '</li><li>' . $item['answ4'] . '</li><li>' . $item['answ5'] . '</li></dd>';
+                case '3': echo '<dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt><dd><ul><li>' . form_checkbox().$item['answ1'] . '</li><li>' . form_checkbox().$item['answ2'] . '</li><li>' . form_checkbox().$item['answ3'] . '</li><li>' . form_checkbox().$item['answ4'] . '</li><li>' . form_checkbox().$item['answ5'] . '</li></dd>';
                     break;
                 case '4': echo '<dt id="' . $item['id'] . '"><h3>' . ' ' . $item['question'] . '</h3></dt><dd></dd>';
                     break;

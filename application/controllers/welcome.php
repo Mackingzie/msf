@@ -132,6 +132,7 @@ class Welcome extends CI_Controller {
     }
 
     public function copy_form() {
+        $data['content']['questions'];
         $data['include'] ="edit_form";
         $id = $this->uri->segment(3);
         if (!$this->forms->copy_form($id)) {

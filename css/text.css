@@ -20,3 +20,15 @@ p, form, input, textarea, .label, dd, dt, li, a, .tags{
 .main_menu{
     font-size: 12pt;
 }
+p{
+    max-width: 950px;
+}
+p.hidden{
+    font-size: 10pt;
+}
+.form_type li, .form_hidden li{
+    color : #fff;
+}
+.form_time{
+    color: #A70000;
+}

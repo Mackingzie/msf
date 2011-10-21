@@ -71,7 +71,7 @@ class questions extends CI_Model {
             case'cursive': $ver_type = '6';
                 break;
 
-            case'em': $ver_type = '7';
+            case'freetext': $ver_type = '7';
                 break;
         }
 

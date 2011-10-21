@@ -77,6 +77,12 @@
 .form_menu, .questions_menu{
     clear: both;
 }
+.form_menu li, .questions_menu li{
+    float: left;
+    position: relative;
+    margin-right: 5px;
+    margin-top: 10px;
+}
 .tags{
     clear: both;
 }
@@ -140,4 +146,35 @@ background-color:#F4F4F8;
 textarea{
     width: 500px;
     height: 100px;
+}
+#view_form{
+    clear: both;
+}
+.form_header{
+    padding: 10px;
+    width: 940px;
+    float: left;
+    position: relative;
+    background: #999;
+}
+.form_header ul{
+    margin-right: 10px;
+    float: left;
+    position: relative;
+}
+.form_time{
+    clear: both;
+}
+.form_time li{
+    margin: 10px 0 0 10px;
+    float: right;
+    position: relative;
+}
+.form_type, .form_hidden{
+    margin-top: 10px;
+}
+.form_tags{
+     margin: 10px 0 0 10px;
+    float: right;
+    position: relative;
 }

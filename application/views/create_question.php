@@ -1,5 +1,18 @@
 <script type="text/javascript">
     $(document).ready(function(){
+        $('input[type="submit"]').attr('disabled','disabled');
+        $("textarea[name=question]").keyup(function(){
+            if($("textarea[name=question]").val() == ""){
+                $('input[type="submit"]').attr('disabled','disabled');
+            }
+            else{
+                $('input[type="submit"]').removeAttr('disabled');
+            }
+        });
+
+    
+
+
         $("#question_submit").click(function(){
             var question = $("textarea[name=question]").val();
             var type =  $("input[name=type]:radio:checked").val();
@@ -9,7 +22,8 @@
             var answ4 = $("input[name=answ4]").val();
             var answ5 = $("input[name=answ5]").val();
             var answ =  $("textarea[name=answ]").val();
-            
+
+
             $.ajax({
                 type: "POST",
                 url: '/msf/index.php/welcome/submit_question',
@@ -18,26 +32,28 @@
             });
             return false;
         });
+
+
     });
 </script>
 <?php
 echo '<div id="create_question">';
 echo 'Add Your question!';
-echo form_open('welcome/submit_question').'<br/>';
-echo form_textarea('question', '', 'id="apa"').'<br/>';
-echo form_radio('type', 'text', TRUE).'Text <br/>';
-echo form_radio('type', 'radiobuttons').'Radiobuttons <br/>';
-echo form_radio('type', 'checkboxes').'Checkboxes <br/>';
+echo form_open('welcome/submit_question') . '<br/>';
+echo form_textarea('question', '', 'id="apa"') . '<br/>';
+echo form_radio('type', 'text', TRUE) . 'Text <br/>';
+echo form_radio('type', 'radiobuttons') . 'Radiobuttons <br/>';
+echo form_radio('type', 'checkboxes') . 'Checkboxes <br/>';
 
 echo 'Fill answer alternatives (will automatically be randomized)<br/>';
-echo form_input('answ1', '').'<br/>';
-echo form_input('answ2', '').'<br/>';
-echo form_input('answ3', '').'<br/>';
-echo form_input('answ4', '').'<br/>';
-echo form_input('answ5', '').'<br/>';
+echo form_input('answ1', '') . '<br/>';
+echo form_input('answ2', '') . '<br/>';
+echo form_input('answ3', '') . '<br/>';
+echo form_input('answ4', '') . '<br/>';
+echo form_input('answ5', '') . '<br/>';
 
 echo 'Fill answer to question<br/>';
-echo form_textarea('answ', '').'<br/>';
+echo form_textarea('answ', '') . '<br/>';
 
 echo form_submit('submit', 'Add Question', 'id="question_submit"');
 echo form_close();

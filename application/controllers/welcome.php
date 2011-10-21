@@ -132,7 +132,7 @@ class Welcome extends CI_Controller {
     }
 
     public function copy_form() {
-        $data['content']['questions'];
+        $data['content']['questions'] = null;
         $data['include'] ="edit_form";
         $id = $this->uri->segment(3);
         if (!$this->forms->copy_form($id)) {
@@ -204,6 +204,7 @@ class Welcome extends CI_Controller {
     }
 
     public function edit_form($id) {
+        $data['content']['questions'] = null;
         $data['include'] = __FUNCTION__;
         if(!$id) $id = $this->uri->segment(3);
         

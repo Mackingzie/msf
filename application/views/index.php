@@ -162,12 +162,9 @@
                 var id = $('.form_header').attr('action').match(/([0-9]+)+/g);
                 var target = '/msf/index.php/welcome/update_questions_to_form/'+id;
                 console.log(items);
-                //Pass sortorder variable to server using ajax to save state
+                
                 
                 $.post(target, 'data='+$.toJSON(sortorder), function(response){
-                    if(response=="success")
-                        var text = $('<div class="success">Saved</div>');
-                    $("#column1").append(text).hide().fadeIn(1000);
                     setTimeout(function(){
                         $('.success').fadeOut(1000).remove();
                     }, 2000);

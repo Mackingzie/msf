@@ -48,7 +48,15 @@
 	background: #f0f0f0;
 	border:1px dashed #666;
 }
-
+#questions_view{
+    width: inherit;
+    height: auto;
+    padding: 20px 0 0 10px;
+}
+#questions_view dd{
+ padding-left: 10px;
+ margin-bottom: 10px;
+}
 .question, .forms, .label{
     border-radius: 15px;
     padding: 5px;

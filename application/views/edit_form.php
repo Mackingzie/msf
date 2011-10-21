@@ -74,7 +74,7 @@ if ($content['tags']) {
 }
 echo "</div>";
 
-echo' <ul class="form_menu"><li>' . anchor("welcome/copy_form/{$content[0]['id']}", 'Create copy') . ' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete form') . '</li></ul>';
+echo' <ul class="form_menu"><li>' . anchor("welcome/copy_form/{$content[0]['id']}", 'Create copy') . ' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete form') . anchor("welcome/view_form/{$content[0]['id']}", 'Show').'</li></ul>';
 echo '</div>';
 
 echo '<p id="create_question"class="msg_head">Add Questions</p>';

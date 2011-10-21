@@ -165,6 +165,9 @@
                 
                 
                 $.post(target, 'data='+$.toJSON(sortorder), function(response){
+                    if(response=="success")
+                        var text = $('<div class="success">Saved</div>');
+                    $("#column1").prepend(text).hide().fadeIn(1000);
                     setTimeout(function(){
                         $('.success').fadeOut(1000).remove();
                     }, 2000);

@@ -101,18 +101,19 @@ class forms extends CI_Model {
 
         $json = json_decode($_POST["data"]);
 
-        $i = 1;
-        while ($i <= 200) {
+        
+        for($i = 1; $i <= 200; $i++) {
             foreach ($json->items as $item) {
 
                 if ($item->order == $i) {
                     $data["q$i"] = $item->id;
-                } 
-                $i++;
+                } else {
+                    $data["q$i"] = NULL;
+                }
             }
-            $data["q$i"] = NULL;
-             $i++;
+            
         }
+
 
         $this->db->update('forms', $data, array('id' => $id));
     }
@@ -332,5 +333,4 @@ q200 INT(10) NULL, qtype200 int(2) NULL
     }
 
 }
-
 ?>

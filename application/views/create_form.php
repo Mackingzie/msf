@@ -1,5 +1,6 @@
 <script type="text/javascript">
     $(document).ready(function(){
+        
         $("#form_submit").click(function(){
             var title = $("input[name=title]").val();
             var form_type = $("input[name=form_type]:radio:checked").val();
@@ -21,6 +22,7 @@
             });
             return false;
         });
+        
     });
 </script>
 
@@ -36,7 +38,7 @@ echo '<li>' . form_input('title', '') . '</li>';
 
 echo "Formtype";
 echo '<li>' . form_radio('form_type', '1', TRUE) . 'Questioner </li>';
-echo '<li>' . form_radio('form_type', '2') . 'Regular </li>';
+echo '<li>' . form_radio('form_type', '2') . 'Regul        ar </li>';
 echo '<li>' . form_radio('form_type', '3') . 'Exams </li>';
 echo '<li>' . form_radio('form_type', '4') . 'Email </li>';
 

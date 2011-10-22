@@ -50,7 +50,8 @@ class Welcome extends CI_Controller {
     }
 
     public function submit_labels() {
-        $this->questions->submit_labels();
+        $result = $this->questions->submit_labels();
+        echo $result;
     }
 
     //questions CRUD

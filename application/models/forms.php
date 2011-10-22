@@ -107,8 +107,8 @@ class forms extends CI_Model {
 
                 if ($item->order == $i) {
                     $data["q$i"] = $item->id;
-                /*} else {
-                    $data["q$i"] = NULL;*/
+                } else {
+                    $data["q$i"] = NULL;
                 }
                 
             }

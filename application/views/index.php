@@ -141,7 +141,7 @@
                         
                         var item = {
                             id: $(this).attr('id'),
-                            order : i +1
+                            order : i
                         };
                        
                         //Push item object into items array

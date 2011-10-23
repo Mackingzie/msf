@@ -74,7 +74,7 @@ class Welcome extends CI_Controller {
     }
 
     public function submit_question() {
-            $this->questions->submit_question();
+            echo $this->questions->submit_question();
     }
 
     public function edit_question($id = null) {

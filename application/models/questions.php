@@ -24,36 +24,52 @@ class questions extends CI_Model {
     }
 
     function submit_question() {
-        
-        $json = json_decode($_POST["data"]);
-        
-        foreach ($json as $item) {
-            switch ($item[1]->type) {
-                case'text': $ver_type = '1';
-                    break;
 
-                case'radiobuttons': $ver_type = '2';
-                    break;
+        $json = json_decode($_POST["data"], TRUE);
+        print_r($json);
+        switch ($json['items'][0]['type']) {
+            case'text': $ver_type = '1';
+                break;
 
-                case'checkboxes': $ver_type = '3';
-                    break;
-            }
-            
-            $data = array(
-                'question' => $item[2]->question,
-                'type' => $ver_type,
-                'answ' => $item[3]->answt
-            );
-           
-                $data['answ' . $item[0]->id] = $item[0]->answ;
-                $data['cansw' . $item[0]->id] = $item[0]->checked;
-              
+            case'radiobuttons': $ver_type = '2';
+                break;
+
+            case'checkboxes': $ver_type = '3';
+                break;
         }
 
+        $data = array(
+            'question' => $json['items'][1]['question'],
+            'type' => $ver_type
+        );
+        
+        $data['answ1'] = $json['items'][2]['answ'];
+        $data['answ2'] = $json['items'][3]['answ'];
+        $data['answ3'] = $json['items'][4]['answ'];
+        $data['answ4'] = $json['items'][5]['answ'];
+        $data['answ5'] = $json['items'][6]['answ'];
+        $data['answ6'] = $json['items'][7]['answ'];
+        $data['answ7'] = $json['items'][8]['answ'];
+        $data['answ8'] = $json['items'][9]['answ'];
+        $data['answ9'] = $json['items'][10]['answ'];
+        $data['answ10'] = $json['items'][11]['answ'];
+
+        $data['cansw1'] = $json['items'][2]['cansw'];
+        $data['cansw2'] = $json['items'][3]['cansw'];
+        $data['cansw3'] = $json['items'][4]['cansw'];
+        $data['cansw4'] = $json['items'][5]['cansw'];
+        $data['cansw5'] = $json['items'][6]['cansw'];
+        $data['cansw6'] = $json['items'][7]['cansw'];
+        $data['cansw7'] = $json['items'][8]['cansw'];
+        $data['cansw8'] = $json['items'][9]['cansw'];
+        $data['cansw9'] = $json['items'][10]['cansw'];
+        $data['cansw10'] = $json['items'][11]['cansw'];
+         
+         
         print_r($data);
-        die;
+        
         if ($this->db->insert('questions', $data))
-            return 'success';
+            return 'a2';
     }
 
     function submit_labels() {
@@ -85,6 +101,7 @@ class questions extends CI_Model {
         );
 
         print_r($data);
+        die;
         $this->db->insert('questions', $data);
     }
 

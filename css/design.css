@@ -69,10 +69,14 @@
 .dragbox-content{
     height: auto;
 }
+
 .forms ul li{
     float: left;
     position: relative;
     margin-left: 10px;
+}
+.answer{
+    color: #fff;
 }
 .form_menu, .questions_menu{
     clear: both;

@@ -13,6 +13,7 @@
             });
        return false;
         });*/
+        
     });
 </script>
 <?php
@@ -27,10 +28,12 @@ if ($content) {
     foreach ($content as $item) {
 
         switch ($item['type']) {
-            case '1': echo '<dl class="question dragbox"><dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt>
+            case 1: echo '<dl class="question dragbox"><dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt>
                             <dd class="dragbox-content">' . $item['answ1'] . '</dd></dl>';
                 break;
-            case '2': echo '<dl class="question dragbox">
+            case 2:
+            case 3:
+                echo '<dl class="question dragbox">
                                 <dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt>
                                 <dd class="dragbox-content">
                                     <ul>
@@ -48,17 +51,15 @@ if ($content) {
                                 </dd>
                             </dl>';
                 break;
-            case '3': echo '<dl class="question dragbox"><dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt><dd class="dragbox-content"><ul><li>' . $item['answ1'] . '</li><li>' . $item['answ2'] . '</li><li>' . $item['answ3'] . '</li><li>' . $item['answ4'] . '</li><li>' . $item['answ5'] . $item['answ6'] . '</li><li>' . $item['answ7'] . '</li><li>' . $item['answ8'] . '</li><li>' . $item['answ9'] . '</li><li>' . $item['answ10'] . '</li></dd></dl>';
+            case 4: echo '<dl class="label"><dt id="' . $item['id'] . '"><h3>' . ' ' . $item['question'] . '</h3></dt></dl>';
                 break;
-            case '4': echo '<dl class="label"><dt id="' . $item['id'] . '"><h3>' . ' ' . $item['question'] . '</h3></dt></dl>';
+            case 5: echo '<dl class="label"><dt id="' . $item['id'] . '"><h4>' . ' ' . $item['question'] . '</h4></dt></dl>';
                 break;
-            case '5': echo '<dl class="label"><dt id="' . $item['id'] . '"><h4>' . ' ' . $item['question'] . '</h4></dt></dl>';
+            case 6: echo '<dl class="label"><dt id="' . $item['id'] . '"><i>' . ' ' . $item['question'] . '</i></dt></dl>';
                 break;
-            case '6': echo '<dl class="label"><dt id="' . $item['id'] . '"><i>' . ' ' . $item['question'] . '</i></dt></dl>';
+            case 7: echo '<dl class="label"><dt id="' . $item['id'] . '"><em>' . ' ' . $item['question'] . '</em></dt></dl>';
                 break;
-            case '7': echo '<dl class="label"><dt id="' . $item['id'] . '"><em>' . ' ' . $item['question'] . '</em></dt></dl>';
-                break;
-            case '8': echo '<dl class="default_label"><dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt></dl>';
+            case 8: echo '<dl class="default_label"><dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt></dl>';
                 break;
         }
     }

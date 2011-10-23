@@ -104,7 +104,10 @@ class Welcome extends CI_Controller {
         }
         
     }
-
+    public function list_all_questions(){
+       echo json_encode($this->questions->list_questions());
+       #print_r($this->questions->list_questions());
+    }
     //forms
     public function list_forms() {
         $data['include'] = __FUNCTION__;
@@ -205,12 +208,13 @@ class Welcome extends CI_Controller {
     }
 
     public function edit_form($id) {
-        $data['content']['questions'] = null;
+        
         $data['include'] = __FUNCTION__;
         if(!$id) $id = $this->uri->segment(3);
         
         $data['content'] = $this->forms->view_form($id);
         $i = 0;
+        $data['content']['questions'] = null;
         foreach ($data['content'][0] as $item_key => $item_value) {
             if ($i >= 9) {
                 if ($i % 2) {

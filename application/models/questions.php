@@ -24,16 +24,14 @@ class questions extends CI_Model {
     }
 
     function submit_question() {
-
+        
         $json = json_decode($_POST["data"], TRUE);
-        print_r($json);
+        
         switch ($json['items'][0]['type']) {
             case'text': $ver_type = '1';
                 break;
-
             case'radiobuttons': $ver_type = '2';
                 break;
-
             case'checkboxes': $ver_type = '3';
                 break;
         }
@@ -64,10 +62,8 @@ class questions extends CI_Model {
         $data['cansw8'] = $json['items'][9]['cansw'];
         $data['cansw9'] = $json['items'][10]['cansw'];
         $data['cansw10'] = $json['items'][11]['cansw'];
-         
-         
         print_r($data);
-        
+        #die;
         if ($this->db->insert('questions', $data))
             return 'a2';
     }
@@ -100,8 +96,6 @@ class questions extends CI_Model {
             'type' => $ver_type,
         );
 
-        print_r($data);
-        die;
         $this->db->insert('questions', $data);
     }
 

@@ -92,7 +92,7 @@ echo '<p class="msg_head">Add Questions to form</p>';
 echo '<div class="msg_body">';
 echo "<p class='sort_questions'>Sort by: <a href='#' id='sortQuestions'>Questions</a><a href='#' id='sortLabels'>Labels</a><a href='#' id='sortBoth'>Both</a></p>";
 echo "<div class='column' id='column1'>";
-if ($content['questions']) {
+if ($content['questions'] != NULL) {
     foreach ($content['questions'] as $key) {
         foreach ($key as $item) {
 
@@ -111,6 +111,8 @@ if ($content['questions']) {
                     break;
                 case '7': echo '<dl class="label dragbox"><dt id="' . $item['id'] . '"><em>' . ' ' . $item['question'] . '</em></dt><dd></dd></dl>';
                     break;
+                case 8: echo '<dl class="default_label dragbox"><dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt></dl>';
+                break;
             }
         }
     }
@@ -135,6 +137,8 @@ if ($content['all_questions']) {
             case '6': echo '<dl class="label dragbox"><dt id="' . $item['id'] . '"><i>' . ' ' . $item['question'] . '</i></dt><dd></dd></dl>';
                 break;
             case '7': echo '<dl class="label dragbox"><dt id="' . $item['id'] . '"><em>' . ' ' . $item['question'] . '</em></dt><dd></dd></dl>';
+                break;
+            case 8: echo '<dl class="default_label dragbox"><dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt></dl>';
                 break;
         }
     }

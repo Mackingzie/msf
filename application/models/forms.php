@@ -53,8 +53,8 @@ class forms extends CI_Model {
             if ($item['qtype' . $i])
                 $data['qtype' . $i] = $item['qtype' . $i];
             $i++;
-            if ($i == 200)
-                break;
+            if ($i == 200
+                )exit;
         }
         $this->db->insert('forms', $data);
         return true;
@@ -100,21 +100,22 @@ class forms extends CI_Model {
     function submit_questions_to_form($id) {
 
         $json = json_decode($_POST["data"]);
+        $y = 0;
 
-        
-        for($i = 1; $i <= 200; $i++) {
-            foreach ($json->items as $item) {
+        $i = 1;
+        foreach ($json->items as $item) {
+          //  print($item->order . ' :' . $y . "\n");
 
-                if ($item->order == $i) {
-                    $data["q$i"] = $item->id;
-                } else {
-                    $data["q$i"] = NULL;
-                }
-                
-            }
-            
+            $data["q$i"] = $item->id;
+
+            $y = $item->order;
+            $i++;
         }
-
+        print($y);
+        for ($z = $y+1; $z <= 199; $z++) {
+            $data["q$z"] = NULL;
+        }
+        print(" z:".$z);
 
         $this->db->update('forms', $data, array('id' => $id));
     }
@@ -334,4 +335,5 @@ q200 INT(10) NULL, qtype200 int(2) NULL
     }
 
 }
+
 ?>

@@ -21,20 +21,52 @@ class Welcome extends CI_Controller {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public function index() {
+
         $data['include'] = 'start';
 
         $this->load->view('index', $data);
     }
 
+    public function user_home() {
+        $data['include'] = __FUNCTION__;
+        $this->load->view('index', $data);
+    }
+
+    // create a new user
+    public function register() {
+        if ($this->simpleloginsecure->create($_POST['email'], $_POST['password'])) {
+            redirect('welcome/user_home');
+        } else {
+            redirect('index');
+        }
+    }
+
     public function login() {
-        redirect('welcome/list_questions');
+// attempt to login
+        if ($this->simpleloginsecure->login($_POST['email'], $_POST['password'])) {
+            // success
+            redirect('welcome/user_home');
+        } else {
+            redirect('weelcome/user_home');
+        }
+    }
+
+// logout
+    public function logout() {
+        $this->simpleloginsecure->logout();
+        redirect('welcome/index');
+    }
+
+// delete by user ID
+    public function unregister() {
+        $this->simpleloginsecure->delete($user_id);
     }
 
     public function lost_passw() {
         redirect('welcome/list_questions');
     }
 
-    //admin functions
+//admin functions
     public function create_forms_table() {
 
         /* recreates forms table */
@@ -43,7 +75,7 @@ class Welcome extends CI_Controller {
         $this->load->view('create_forms_table');
     }
 
-    //label CRUD
+//labels CRUD
     public function create_labels() {
         $data['include'] = __FUNCTION__;
         $this->load->view('index', $data);
@@ -54,7 +86,7 @@ class Welcome extends CI_Controller {
         echo $result;
     }
 
-    //questions CRUD
+//questions CRUD
     public function list_questions() {
         $data['include'] = __FUNCTION__;
         $data['content'] = $this->questions->list_questions();
@@ -74,7 +106,7 @@ class Welcome extends CI_Controller {
     }
 
     public function submit_question() {
-            echo $this->questions->submit_question();
+        echo $this->questions->submit_question();
     }
 
     public function edit_question($id = null) {
@@ -102,13 +134,14 @@ class Welcome extends CI_Controller {
             $this->tags->delete_tag_question_connections($id);
             redirect('welcome/list_questions');
         }
-        
     }
-    public function list_all_questions(){
-       echo json_encode($this->questions->list_questions());
-       #print_r($this->questions->list_questions());
+
+    public function list_all_questions() {
+        echo json_encode($this->questions->list_questions());
+        #print_r($this->questions->list_questions());
     }
-    //forms
+
+//forms
     public function list_forms() {
         $data['include'] = __FUNCTION__;
         $data['content'] = $this->forms->list_forms();
@@ -137,12 +170,12 @@ class Welcome extends CI_Controller {
 
     public function copy_form() {
         $data['content']['questions'] = null;
-        $data['include'] ="edit_form";
+        $data['include'] = "edit_form";
         $id = $this->uri->segment(3);
         if (!$this->forms->copy_form($id)) {
             redirect("list_form");
         }
-     
+
         $data['content'] = $this->forms->view_form($id);
         $i = 0;
         foreach ($data['content'][0] as $item_key => $item_value) {
@@ -156,7 +189,7 @@ class Welcome extends CI_Controller {
             }
             $i++;
         }
-        
+
         $data['content']['all_questions'] = $this->questions->list_questions();
 
 
@@ -167,9 +200,10 @@ class Welcome extends CI_Controller {
     }
 
     public function view_form($id = null) {
-        $data['content']['questions'] = null;
+        $data['content']['questions'][] = null;
         $data['include'] = __FUNCTION__;
-        if(!$id) $id = $this->uri->segment(3);
+        if (!$id)
+            $id = $this->uri->segment(3);
 
         $data['content'] = $this->forms->view_form($id);
         $i = 0;
@@ -184,9 +218,8 @@ class Welcome extends CI_Controller {
             }
             $i++;
         }
-        
-        $data['content']['all_questions'] = $this->questions->list_questions();
 
+        $data['content']['all_questions'] = $this->questions->list_questions();
 
         foreach ($data['content'][0] as $item) {
             $data['content']['tags'] = $this->tags->retrieve_form_tags($item['id']);
@@ -208,10 +241,11 @@ class Welcome extends CI_Controller {
     }
 
     public function edit_form($id) {
-        
+
         $data['include'] = __FUNCTION__;
-        if(!$id) $id = $this->uri->segment(3);
-        
+        if (!$id)
+            $id = $this->uri->segment(3);
+
         $data['content'] = $this->forms->view_form($id);
         $i = 0;
         $data['content']['questions'] = null;
@@ -226,12 +260,12 @@ class Welcome extends CI_Controller {
             }
             $i++;
         }
-        
+
         $data['content']['all_questions'] = $this->questions->list_questions();
 
 
         foreach ($data['content'][0] as $item) {
-            $data['content']['tags'] = $this->tags->retrieve_form_tags($item['id']);
+            $data['content']['tags'] = $this->tags->retrieve_form_tags($item_value);
         }
 
         $this->load->view('index', $data);
@@ -242,8 +276,14 @@ class Welcome extends CI_Controller {
         $this->forms->submit_questions_to_form($id);
     }
 
+    public function update_points_to_form() {
+        $id = $this->uri->segment(3);
+        $this->forms->submit_points_to_form($id);
+    }
+
     public function update_form($id) {
         $this->forms->update_form($id);
+        $this->forms->submit_questions_to_form($id);
     }
 
 }

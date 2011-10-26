@@ -6,6 +6,7 @@
 ?>
 
 <!DOCTYPE html>
+<html>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
     <title>Modular School Forms</title>
@@ -195,7 +196,11 @@
 <body>
 
     <?php
-    $this->load->view('login');
+    if($this->session->userdata('logged_in')){
+        $this->load->view('logout');
+    }else{
+        $this->load->view('login');
+    }
     echo '<div id="site_wrapper">';
 
     $this->load->view('header');

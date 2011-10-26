@@ -20,7 +20,7 @@
         }
         var att = "<dl class='answers_type_text'>"
             +"Enter a korrekt answer for easier corection<br/>"
-            +"<dt><textarea name='answ1'></textarea></dt><dd></dd>"
+            +"<dt><textarea name='answ'></textarea></dt><dd></dd>"
             +"</dl>";
 
         var answ_type =  $("input[name=type]:radio:checked").val();
@@ -49,14 +49,18 @@
                 var fieldsel = $('.answers_type_radiobuttons');
             }else if(fieldtype == 'checkboxes'){
                 var fieldsel = $('.answers_type_checkboxes');
+            }else if(fieldtype == 'text'){
+                var fieldsel = $('.answers_type_text');
+                
             }
             //extra data
             var type = {type: $("input[name=type]:radio:checked").val()};
             var question = {question: $("textarea[name=question]").val()};
-            var answ = {answ1: $("textarea[name=answ1]").val()};
+            
+               
             items.push(type);
             items.push(question);
-            items.push(answ);
+            
 
            
             $(fieldsel).each(function(){
@@ -88,7 +92,7 @@
             });
         
             var data = { items: items };
-            
+                console.log(data);
                 $.post('/msf/index.php/welcome/submit_question', 'data='+$.toJSON(data), function(){
                     /* console.log(response);
                 if(response == "success"){

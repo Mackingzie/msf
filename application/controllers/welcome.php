@@ -137,8 +137,8 @@ class Welcome extends CI_Controller {
     }
 
     public function list_all_questions() {
-        echo json_encode($this->questions->list_questions());
-        #print_r($this->questions->list_questions());
+        //echo json_encode($this->questions->list_questions());
+        print_r($this->questions->list_questions());
     }
 
 //forms

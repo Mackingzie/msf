@@ -4,12 +4,13 @@
         $("#label_submit").click(function(){
             var label = $("#label").val();
             var type = $("input[name=type]:radio:checked").val();
-
+            var author_id = $("hidden[name=author_id]").val();
+            
             $.ajax({
                 type: "POST",
                 url: '/msf/index.php/welcome/submit_labels',
                 dataType: "json",
-                data: "label="+label+"&type="+type,
+                data: "label="+label+"&type="+type+"&author_id="+author_id,
                 cache:false,
                 success: function(data){
                     $(".Label").append(data);
@@ -36,6 +37,7 @@
 <div id="create_label">
     <form action="welcome/submit_labels" method="post">
         <ul class="Label">
+            <li><?php echo form_hidden('author_id', $session->userdata('id')) ?></li>
             <li id="label_input">
                 <input type="text" name="type" />
             </li>

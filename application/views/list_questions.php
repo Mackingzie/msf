@@ -20,7 +20,7 @@
         url: "/msf/index.php/welcome/list_all_questions",
         dataType: "json",
         success: function (res) {
-            alert('success');
+           
         },
         error: function (xhr, status, error) {
             alert('error!');

@@ -196,11 +196,14 @@
 <body>
 
     <?php
-    if($this->session->userdata('logged_in')){
-        $this->load->view('logout');
-    }else{
-        $this->load->view('login');
-    }
+    
+    echo '<pre>';
+    print_r($session->userdata);
+     echo '</pre>';
+     
+    
+    $this->load->view('login');
+   
     echo '<div id="site_wrapper">';
 
     $this->load->view('header');

@@ -23,7 +23,7 @@ echo '<p class="msg_head">Form preferences</p>';
 echo '<div class="msg_body">';
 
 echo form_open("welcome/submit_form") . '<br/>';
-echo '<ul><li>' . form_hidden('author_id', '2') . '</li>';
+echo '<ul><li>' . form_hidden('author_id', $session->userdata('id')) . '</li>';
 echo 'Title<br/>';
 echo '<li>' . form_input('title', '') . '</li>';
 
@@ -43,7 +43,7 @@ echo '<li>' . form_input('timer', '') . 'Timer example <i>hours:mins</i></li>';
 echo '<li>' . form_input('active_start', date('Y-m-d')) . 'Startdate</li>';
 echo '<li>' . form_input('active_end', date('Y-m-d')) . 'Enddate</li>';
 
-echo '<li>' . anchor('welcome/list_forms', 'Back list') . ' ' . form_submit('submit', 'Save form', 'id="form_submit') . '</li>';
+echo '<li>' . anchor('welcome/list_forms', 'Back to list') . ' ' . form_submit('submit', 'Save form', 'id="form_submit') . '</li>';
 echo '</ul>';
 
 

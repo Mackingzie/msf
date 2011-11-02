@@ -45,7 +45,7 @@ echo '<p class="msg_head">Form preferences</p>';
 echo '<div class="msg_body">';
 
 echo form_open("welcome/update_form/{$content[0]['id']}", 'class="form_header"') . '<br/>';
-echo '<li>' . form_hidden('author_id', '2') . '</li>';
+echo '<li>' . form_hidden('author_id', $session->userdata('id')) . '</li>';
 echo 'Title<br/>';
 echo form_input('title', $content[0]['title']) . '<br/>';
 echo "Formtype<br/>";

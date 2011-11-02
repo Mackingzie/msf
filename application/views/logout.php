@@ -33,7 +33,7 @@
             </div>
             <div class="left right">
                 <!-- Register Form -->
-                <form action="index.php/welcome/register" method="post">
+                <form action="register" method="post">
                     <h1>Not a member yet? Sign Up!</h1>
                     <label class="grey" for="email">Email:</label>
                     <input class="field" type="text" name="email" id="email" size="23" />

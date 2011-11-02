@@ -127,14 +127,15 @@ class Users extends CI_Model {
         $this->db->from('users_beto_groups');
         $this->db->join('users_has_groups', 'users_has_groups.group_id = users_beto_groups.group_id');
         $this->db->where('users_has_groups.user_id', $id);
+        $this->db->order_by('users_has_groups.group_id');
         $query = $this->db->get();
        
         return $query->result_array();
     }
     function list_users_by_id($id) {
         $this->db->select('email, id');
-        $this->db->get('users');
         $query = $this->db->where('users.id', $id);
+        $this->db->get('users');
         return $query->result_array();
     }
 

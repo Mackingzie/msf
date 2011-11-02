@@ -360,15 +360,18 @@ class Welcome extends CI_Controller {
         if ($this->session->userdata('user_level') > 1000)
             redirect('welcome/permission_denied');
 
-        $data['content']['groups'] = null;
+        $data['content']['group'] = null;
         $data['content']['groups'] = $this->users->list_groups_by_id();
+        $group = null;
         foreach($data['content']['groups'] as $item){
-            //$user = $this->users->list_users_by_id($item['user_id']);
-            $data['content'][$item['group_id']] = $item['user_id'];
+            $group = $item['group_id'];
+            if($data['content']['group'][$item['group_id']] == $group){
+                $data['content']['group'][$group] = array($item['user_id']);
+            }
         }
         echo '<pre>';
         //print_r($user);
-        print_r($data['content']['groups']);
+        print_r($data['content']['group']);
         echo '</pre>';
         die;
         $data['content']['all_users'] = $this->users->list_users();

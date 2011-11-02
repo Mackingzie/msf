@@ -1,7 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
-        $('.column').sortable({
-            connectWith: '.column',
+        $('.gcolumn').sortable({
+            connectWith: '.gcolumn',
             handle: 'dt',
             cursor: 'move',
             placeholder: 'placeholder',
@@ -20,11 +20,11 @@
         })
         .disableSelection();
 
-        function updateWidgetData(){
+        $('#form_submit').click(function(){
             var items=[];
 
 
-            $('#column1').each(function(){
+            $('#gcolumn1').each(function(){
                 $('.dragbox dt', this).each(function(i){
 
                     var item = {
@@ -51,8 +51,8 @@
 
             }
 
-            var id = $('.form_header').attr('action').match(/([0-9]+)+/g);
-            var target = '/msf/index.php/welcome/submit_users_group/'+id;
+            var author_id = $("hidden[name=author_id]").val();
+            var target = '/msf/index.php/welcome/submit_users_to_group/'+author_id;
             console.log(items);
 
 
@@ -66,46 +66,43 @@
                 return false;
             });
 
-        }
-        $('#form_submit').click(function(){
-            updateWidgetData();
         });
+       
     });
 </script>
 <?php
-
 echo form_open();
 echo '<p class="msg_head">Add Users</p>';
 echo form_hidden('author_id', $session->userdata('id'));
-$this->load->view('create_groups');
-echo "<div class='column' id='column1'>";
-if ($content['users'] != NULL) {
-    foreach ($content['users'] as $key) {
-        foreach ($key as $item) {
+echo "<div class='gcolumn' id='gcolumn1'>";
 
-            echo '<dl class="question dragbox">
-                    <dt id="' . $item['id'] . '">' . ' ' . $item['email'] . '</dt>
-                        <dd class="dragbox-content"></dd>
-                    </dl>';
-        }
-    }
-}
 
 echo "</div>";
-echo "<div class='column' id='column2'>";
+echo "<div class='gcolumn' id='gcolumn2'>";
 
 foreach ($content['all_users'] as $item) {
     echo '<dl class="question dragbox">
-                    <dt id="' . $item['id'] . '">' . ' ' . $item['email'] . '</dt>
-                        <dd class="dragbox-content"></dd>
-                    </dl>';
+        <dt id="' . $item['id'] . '">' . ' ' . $item['email'] . '</dt>
+        <dd class="dragbox-content"></dd>
+        </dl>';
+}
+if ($content['group'] != NULL) {
+    foreach ($content['group'] as $key => $users) {
+
+        echo '<dl class="question dragbox">
+                <dt id="' . $key . '">Group id: ' . $key . '</dt>';
+        foreach ($users as $key => $item) {
+            echo '<dd class="dragbox-content">' .$item['email'] . '</dd>';
+        }
+        echo '</dl>';
+    }
 }
 
 
 echo '</div>';
 
 echo "<div id='content_footer'>";
-echo form_submit('submit', 'Save form', 'id="form_submit');
+echo form_submit('submit', 'Send', 'id="form_submit');
 echo form_close();
 echo '</div>';
 ?>

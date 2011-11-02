@@ -118,6 +118,7 @@ class Welcome extends CI_Controller {
     }
 
     public function create_question() {
+        $data['session'] = $this->session;
         if ($this->session->userdata('user_level') > 1000)
             redirect('welcome/permission_denied');
         $data['include'] = __FUNCTION__;
@@ -131,6 +132,7 @@ class Welcome extends CI_Controller {
     }
 
     public function edit_question($id = null) {
+        $data['session'] = $this->session;
         if ($this->session->userdata('user_level') > 1000)
             redirect('welcome/permission_denied');
         $data['include'] = __FUNCTION__;
@@ -154,6 +156,7 @@ class Welcome extends CI_Controller {
     }
 
     public function delete_question() {
+        $data['session'] = $this->session;
         if ($this->session->userdata('user_level') > 1000)
             redirect('welcome/permission_denied');
         $id = $this->uri->segment(3);
@@ -341,12 +344,39 @@ class Welcome extends CI_Controller {
         $this->forms->submit_questions_to_form($id);
     }
 
-    public function send_form_to_users() {
+    public function send_form_to_users($id = null) {
         $data['content']['users'] = null;
         $data['session'] = $this->session;
         $data['include'] = __FUNCTION__;
         if ($this->session->userdata('user_level') > 1000)
             redirect('welcome/permission_denied');
+        $data['include'] = __FUNCTION__;
+        if (!$id)
+            $id = $this->uri->segment(3);
+
+        $data['content'] = $this->forms->view_form($id);
+
+        $i = 0;
+        foreach ($data['content'] as $item) {
+            $data['content'][$i]['tags'] = $this->tags->retrieve_form_tags($item['id']);
+            $i++;
+        }
+
+
+        $data['content']['groups'] = $this->users->list_groups_by_id();
+
+        foreach ($data['content']['groups'] as $item) {
+            $users = $this->users->list_users_by_id($item['user_id']);
+            $group = $item['group_id'];
+
+            foreach ($users as $user) {
+                if ($group == $item['group_id']) {
+                    $data['content']['group'][$group][] = array('id' => $user['id'], 'email' => $user['email']);
+                } else {
+                    $data['content']['group'][$item['group_id']][] = array('id' => $user['id'], 'email' => $user['email']);
+                }
+            }
+        }
 
         $data['content']['all_users'] = $this->users->list_users();
         $this->load->view('index', $data);
@@ -360,22 +390,27 @@ class Welcome extends CI_Controller {
         if ($this->session->userdata('user_level') > 1000)
             redirect('welcome/permission_denied');
 
-        $data['content']['group'] = null;
+
         $data['content']['groups'] = $this->users->list_groups_by_id();
-        $group = null;
-        foreach($data['content']['groups'] as $item){
+
+        foreach ($data['content']['groups'] as $item) {
+            $users = $this->users->list_users_by_id($item['user_id']);
             $group = $item['group_id'];
-            if($data['content']['group'][$item['group_id']] == $group){
-                $data['content']['group'][$group] = array($item['user_id']);
+
+            foreach ($users as $user) {
+                if ($group == $item['group_id']) {
+                    $data['content']['group'][$group][] = array('id' => $user['id'], 'email' => $user['email']);
+                } else {
+                    $data['content']['group'][$item['group_id']][] = array('id' => $user['id'], 'email' => $user['email']);
+                }
             }
         }
-        echo '<pre>';
-        //print_r($user);
-        print_r($data['content']['group']);
-        echo '</pre>';
-        die;
+
         $data['content']['all_users'] = $this->users->list_users();
         $this->load->view('index', $data);
+    }
+    public function submit_user_to_group(){
+        
     }
 
 }

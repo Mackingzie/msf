@@ -22,7 +22,7 @@
     margin: 10px 10px 0 -10px;
 }
 
-.column{
+.column, .gcolumn{
     width: 470px;
     min-height: 400px;
     max-height: 400px;
@@ -33,7 +33,7 @@
     position: relative;   
 }
 /* edit form alignment for questions*/
-.column dl{
+.column dl, .gcolumn dl{
     min-height: 26px;
     margin-left: 10px;
     margin-right: 10px;
@@ -44,7 +44,7 @@
     cursor: move;
 }
 
-.column  .placeholder{
+.column  .placeholder, .gcolumn  .placeholder{
 	background: #f0f0f0;
 	border:1px dashed #666;
 }

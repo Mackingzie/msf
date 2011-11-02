@@ -20,6 +20,7 @@ foreach ($content as $item) {
                     . ' ' . anchor("welcome/copy_form/{$item['id']}", 'Clone')
                     . ' ' . anchor("welcome/edit_form/{$item['id']}", 'Edit')
                     . ' ' . anchor("welcome/delete_form/{$item['id']}", 'Delete')
+                             . ' ' . anchor("welcome/send_form_to_users/{$item['id']}", 'Use')
                 . '</li>
             </ul>';
 

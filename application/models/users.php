@@ -134,8 +134,8 @@ class Users extends CI_Model {
     }
     function list_users_by_id($id) {
         $this->db->select('email, id');
-        $query = $this->db->where('users.id', $id);
-        $this->db->get('users');
+        $this->db->where('users.id', $id);
+        $query = $this->db->get('users');
         return $query->result_array();
     }
 

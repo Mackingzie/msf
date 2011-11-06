@@ -1,7 +1,30 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        /*
-        $("#column2 a").click(function(){
+        $(document).ready(function(){
+           /* function refreshshoutbox(){ //testing
+                if($F('refresh').checked == false) return; // Just checks to see if the user has the 'refresh' checked
+                var opt = {
+                        method:'post',
+                        postBody: 'code=refresh',
+                        onSuccess: function(t){ $('shouts').innerHTML = t.responseText; },
+                        onLoading: function(){}
+                        }
+                new Ajax.Request('/ajax/shoutbox.php', opt); // Sends a request to my PHP script and gets the new shouts
+                setTimeout("refreshshoutbox()", 10000); // Sets an interval to call itself in 10 seconds */
+}
+
+
+
+
+          /*$.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+                setInterval(function() {
+                $('#autoUpdate').load('list_questions');
+                }, 3000); // the "3000" here refers to the time to refresh the div.  it is in milliseconds.
+        });*/
+
+
+
+    /*    $("#column2 a").click(function(){
            var id = $(this).match(/([0-9]+)+/g);
            console.log(id);
             $.ajax({
@@ -12,8 +35,9 @@
                 cache:false
             });
        return false;
+
         });*/
-        
+
        
          $.ajax({
         type: "POST",
@@ -27,7 +51,7 @@
         }
     });
 
-    });
+    
 </script>
 <?php
 echo '<div>';
@@ -46,7 +70,7 @@ if ($content) {
                 break;
             case 2:
             case 3:
-                echo '<dl class="question dragbox">
+                echo '<dl class="question dragbox" id="autoUpdate">
                                 <dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt>
                                 <dd class="dragbox-content">
                                     <ul>

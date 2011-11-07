@@ -27,8 +27,8 @@ p.hidden{
     font-size: 10pt;
 }
 .form_type li, .form_hidden li{
-    color : #fff;
+    color : #000;
 }
 .form_time{
-    color: #A70000;
+    color: #000;
 }

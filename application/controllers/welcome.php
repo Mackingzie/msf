@@ -409,8 +409,85 @@ class Welcome extends CI_Controller {
         $data['content']['all_users'] = $this->users->list_users();
         $this->load->view('index', $data);
     }
-    public function submit_user_to_group(){
+
+    public function submit_user_to_group() {
         
+    }
+
+    public function submit_form_to_users() {
+        if ($this->session->userdata('user_level') > 1000)
+            redirect('welcome/permission_denied');
+        $form_id = $this->uri->segment(3);
+        
+        $sender = $this->session->userdata('id');
+        if($this->forms->submit_form_to_users($form_id, $sender)){
+            redirect('welcome/list_forms');
+        }
+    }
+
+    public function list_active_forms() {
+        $data['content']['users'] = null;
+        $data['session'] = $this->session;
+        $data['include'] = __FUNCTION__;
+        if ($this->session->userdata('user_level') > 1000)
+            redirect('welcome/permission_denied');
+
+        $id = $this->session->userdata('id');
+
+        $data['content'] = $this->forms->list_active_forms($id);
+
+        $i = 0;
+        foreach ($data['content'] as $item) {
+            $data['content'][$i]['email'] = $this->forms->form_sender($item['sender']);
+            $i++;
+        }
+        
+        $y = 0;
+        foreach ($data['content'] as $item) {
+          
+            $today = strtotime(date("Y-m-d"));
+            $expiration_date = strtotime($item['active_end']);
+            
+            if ($expiration_date < $today) {
+                $this->forms->delete_active_form($item['id'], $id);
+                unset($data['content'][$y]);
+            }
+        }
+
+        $this->load->view('index', $data);
+    }
+
+    public function list_inactive_forms() {
+        $data['content']['users'] = null;
+        $data['session'] = $this->session;
+        $data['include'] = __FUNCTION__;
+        if ($this->session->userdata('user_level') > 1000)
+            redirect('welcome/permission_denied');
+
+        $id = $this->session->userdata('id');
+
+        $data['content'] = $this->forms->list_inactive_forms($id);
+
+        $i = 0;
+        foreach ($data['content'] as $item) {
+            $data['content'][$i]['email'] = $this->forms->form_sender($item['sender']);
+            $i++;
+        }
+
+        $this->load->view('index', $data);
+    }
+
+    public function delete_active_form() {
+        $data['session'] = $this->session;
+        if ($this->session->userdata('user_level') > 1000)
+            redirect('welcome/permission_denied');
+
+        $id = $this->uri->segment(3);
+        $uid = $this->session->userdata('id');
+
+        if ($this->forms->delete_active_form($id, $uid)) {
+            redirect('welcome/list_active_forms');
+        }
     }
 
 }

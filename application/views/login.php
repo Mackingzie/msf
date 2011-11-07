@@ -16,7 +16,7 @@
 
 			<div class="left">
 				<!-- Login Form -->
-				<form class="clearfix" action="login" method="post">
+				<form class="clearfix" action="/msf/index.php/welcome/login/" method="post">
 					<h1>Member Login</h1>
 					<label class="grey" for="email">Email:</label>
 					<input class="field" type="text" name="email" id="email" value="" size="23" />

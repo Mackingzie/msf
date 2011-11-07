@@ -54,6 +54,7 @@ class forms extends CI_Model {
                 $data['qtype' . $i] = $item['qtype' . $i];
             $i++;
             if ($i == 200
+
                 )exit;
         }
         $this->db->insert('forms', $data);
@@ -98,30 +99,33 @@ class forms extends CI_Model {
     function submit_questions_to_form($id) {
 
         $json = json_decode($_POST["data"]);
-        if($json);
+        if ($json
+
+            );
         $y = 0;
 
         $i = 1;
         foreach ($json->items as $item) {
-          
+
             $data["q$i"] = $item->id;
 
             $y = $item->order;
             $i++;
         }
         print($y);
-        for ($z = $y+1; $z <= 199; $z++) {
+        for ($z = $y + 1; $z <= 199; $z++) {
             $data["q$z"] = NULL;
         }
-        print(" z:".$z);
+        print(" z:" . $z);
 
         $this->db->update('forms', $data, array('id' => $id));
     }
 
-      function submit_points_to_form($id) {
+    function submit_points_to_form($id) {
 
         $json = json_decode($_POST["data"]);
-        if($json);
+        if ($json
+            );
         $y = 0;
 
         $i = 1;
@@ -133,12 +137,68 @@ class forms extends CI_Model {
             $i++;
         }
         print($y);
-        for ($z = $y+1; $z <= 199; $z++) {
+        for ($z = $y + 1; $z <= 199; $z++) {
             $data["q_points$z"] = NULL;
         }
-        print(" z:".$z);
+        print(" z:" . $z);
 
         $this->db->update('forms', $data, array('id' => $id));
+    }
+
+    function submit_form_to_users($form_id, $sender) {
+        $json = json_decode($_POST["data"]);
+        if ($json
+            );
+
+        foreach ($json->items as $item) {
+
+            $array = array('form_id' => $form_id, 'user_id' => $item->id, 'sender' => $sender);
+
+            $this->db->set($array);
+            $this->db->insert('forms_active');
+        }
+    }
+
+    function form_sender($id) {
+        $this->db->select('email');
+        $this->db->where('forms_active.sender', $id);
+        $this->db->from('users');
+        $this->db->join('forms_active', 'forms_active.sender = users.id');
+        $query = $this->db->get();
+        foreach ($query->result() as $row) {
+            return $row->email;
+        }
+    }
+
+    function list_active_forms($id) {
+        $attr = array('forms_active.user_id' => $id, 'forms_active.active' => 1);
+        $this->db->select('forms.id, author_id, active_start, active_end, timer, created, title, hidden_type, form_type, sender');
+        $this->db->where($attr);
+        $this->db->from('forms');
+        $this->db->join('forms_active', 'forms_active.form_id = forms.id');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function list_inactive_forms($id) {
+        $attr = array('forms_active.user_id' => $id, 'forms_active.active' => 0);
+        $this->db->select('forms.id, author_id, active_start, active_end, timer, created, title, hidden_type, form_type, sender');
+        $this->db->where($attr);
+        $this->db->from('forms');
+        $this->db->join('forms_active', 'forms_active.form_id = forms.id');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function delete_active_form($id, $uid) {
+        $data = array('active' => 0);
+        $attr = array('form_id' => $id, 'user_id' => $uid);
+        $this->db->where($attr);
+        if ($this->db->update('forms_active', $data)) {
+            return true;
+        }
     }
 
     function create_forms_table() {

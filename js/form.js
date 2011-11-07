@@ -99,7 +99,7 @@ $(document).ready(function(){
 
         var id = $('.form_header').attr('action').match(/([0-9]+)+/g);
         var target = '/msf/index.php/welcome/update_questions_to_form/'+id;
-        console.log(items);
+        
 
 
         $.post(target, 'data='+$.toJSON(sortorder), function(response){

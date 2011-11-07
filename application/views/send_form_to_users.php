@@ -1,7 +1,9 @@
 <script type="text/javascript">
     $(document).ready(function(){
-        $('.column').sortable({
-            connectWith: '.column',
+        
+        
+        $('.user_column').sortable({
+            connectWith: '.user_column',
             handle: 'dt',
             cursor: 'move',
             placeholder: 'placeholder',
@@ -20,7 +22,7 @@
         })
         .disableSelection();
 
-        function updateWidgetData(){
+        $('#add_users').click(function(){
             var items=[];
 
 
@@ -28,15 +30,11 @@
                 $('.dragbox dt', this).each(function(i){
 
                     var item = {
-                        id: $(this).attr('id'),
-                        order : i +1
+                        id: $(this).attr('id')
                     };
 
                     //Push item object into items array
-                    items.push(item);/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+                    items.push(item);
 
 
                 });
@@ -45,17 +43,19 @@
 
             var sortorder = { items: items };
             if(items.length === 0 || items.length == undefined){
-                var itemNull = {id: "0", order: "0"}
+                var itemNull = {id: "0"}
                 items.push(itemNull);
             }else{
 
             }
+            
+            var fid = $('.form_header').attr('action').match(/([0-9]+)+/g);
+            
+               // items.push({fid: "fid"});
+            var target = '/msf/index.php/welcome/submit_form_to_users/'+fid;
+           
 
-            var id = $('.form_header').attr('action').match(/([0-9]+)+/g);
-            var target = '/msf/index.php/welcome/send_form/'+id;
-            console.log(items);
-
-
+            
             $.post(target, 'data='+$.toJSON(sortorder), function(response){
                 if(response=="success")
                     var text = $('<div class="success">Saved</div>');
@@ -65,11 +65,9 @@
                 }, 2000);
                 return false;
             });
-
-        }
-        $('#form_submit').click(function(){
-            updateWidgetData();
+            
         });
+        
     });
 </script>
 <?php
@@ -80,26 +78,26 @@ $content[0]['form_type'] == 3 ? $sel3 = "Exams" : $sel3 = '';
 $content[0]['form_type'] == 4 ? $sel4 = "Email" : $sel4 = '';
 
 $content[0]['hidden_type'] == 1 ? $hidden1 = "Never" : $hidden1 = '';
-$content[0]['hidden_type'] == 2 ? $hidden2 = "After Enddate" : $hidden2 = '';
+$content[0]['hidden_type'] == 2 ? $hidden2 = "Afteconsole.log('items');r Enddate" : $hidden2 = '';
 $content[0]['hidden_type'] == 3 ? $hidden3 = "Allways" : $hidden3 = '';
 
+echo '<div class="msg_list">';
+echo "<p class='msg_head'>Title: {$content[0]['title']}</p>";
+echo '<div class="msg_body">';
 
-echo '<div class="form_header">';
-
-echo "Title: {$content[0]['title']}<br/>";
 
 echo '<ul class="form_type">Formtype<br/>';
 echo "<li>" . $sel1 . $sel2 . $sel3 . '</li>';
 echo '</ul>';
 
-echo '<ul class="form_hidden">User access to form<br/>';
+echo '<ul class="form_hidden"><p>User access to form: </p>';
 echo "<li>" . $hidden1 . $hidden2 . $hidden3 . '</li>';
 echo '</ul>';
 
 echo '<ul class="form_time">';
-echo "<li>Timer: {$content[0]['timer']}</li>";
-echo "<li>Startdate: {$content[0]['active_start']}</li>";
 echo "<li>Enddate: {$content[0]['active_end']}</li>";
+echo "<li>Startdate: {$content[0]['active_start']}</li>";
+echo "<li>Timer: {$content[0]['timer']}</li>";
 echo '</ul>';
 /*
 if ($content['tags']) {
@@ -114,20 +112,24 @@ echo '<ul class="form_menu">';
 echo '<li>' . anchor('welcome/list_forms', 'Forms list') . '</li>
         <li>' . anchor("welcome/edit_form/{$content[0]['id']}", 'Edit') . '</li>';
        
-echo '</ul></div>';
+echo '</ul></div></div>';
 
 
 echo "<div id='questions_view'>";
-echo form_open();
+$attributes = array('class' => 'form_header');
+
+echo form_open($content[0]['id'], $attributes);
+
 echo '<p class="msg_head">Add Users</p>';
 
 echo form_hidden('author_id', $session->userdata('id'));
-echo form_hidden('form_id', $content[0]['id']);
+echo form_hidden('form', $content[0]['id']);
+
 //$this->load->view('create_groups');
-echo "<div class='column' id='column1'>";
+echo "<div class='user_column' id='column1'>";
 echo "</div>";
 
-echo "<div class='column' id='column2'>";
+echo "<div class='user_column' id='column2'>";
 
 foreach ($content['all_users'] as $item) {
     echo '<dl class="question dragbox">
@@ -135,6 +137,7 @@ foreach ($content['all_users'] as $item) {
         <dd class="dragbox-content"></dd>
         </dl>';
 }
+/*
 if ($content['group'] != NULL) {
     foreach ($content['group'] as $key => $users) {
 
@@ -146,12 +149,13 @@ if ($content['group'] != NULL) {
         echo '</dl>';
     }
 }
-
-
+*/
 echo '</div>';
+echo form_button('', 'Send', 'id="add_users"');
+echo form_close();
+
 
 echo "<div id='content_footer'>";
-echo form_submit('submit', 'Send', 'id="form_submit');
-echo form_close();
+
 echo '</div>';
 ?>

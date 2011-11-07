@@ -22,7 +22,7 @@
     margin: 10px 10px 0 -10px;
 }
 
-.column, .gcolumn{
+.column, .gcolumn, .user_column{
     width: 470px;
     min-height: 400px;
     max-height: 400px;
@@ -33,7 +33,7 @@
     position: relative;   
 }
 /* edit form alignment for questions*/
-.column dl, .gcolumn dl{
+.column dl, .gcolumn dl, .user_column dl{
     min-height: 26px;
     margin-left: 10px;
     margin-right: 10px;
@@ -44,7 +44,7 @@
     cursor: move;
 }
 
-.column  .placeholder, .gcolumn  .placeholder{
+.column  .placeholder, .gcolumn  .placeholder, .user_column placeholder{
 	background: #f0f0f0;
 	border:1px dashed #666;
 }
@@ -63,6 +63,7 @@
     background-color: #4F5155;
 }
 .question, .forms, .label, .default_label{
+    height: auto;
     margin-bottom: 3px;
     background: #aaa;
 }

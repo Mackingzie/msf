@@ -12,19 +12,19 @@ $(document).ready(function(){
             //form handling
     $('#sortLabels').click(function(evt){
         evt.preventDefault();
-        $('#column2 .label').show(300);
+        $('#column2 .label, #column2 .default_label').show(300);
         $('#column2 .question').hide(500);
 
     });
     $('#sortQuestions').click(function(evt){
         evt.preventDefault();
         $('#column2 .question').show();
-        $('#column2 .label').hide(500);
+        $('#column2 .label, #column2 .default_label').hide(500);
 
     });
-    $('#sortBoth').click(function(evt){
+    $('#sortAll').click(function(evt){
         evt.preventDefault();
-        $('#column2 .label').show(300);
+        $('#column2 .label, #column2 .default_label').show(300);
         $('#column2 .question').show();
     });
 

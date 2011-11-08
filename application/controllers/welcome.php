@@ -23,7 +23,7 @@ class Welcome extends CI_Controller {
     public function index() {
         $data['session'] = $this->session;
         $data['include'] = 'start';
-
+        
         $this->load->view('index', $data);
     }
 
@@ -86,7 +86,7 @@ class Welcome extends CI_Controller {
 //labels CRUD
     public function create_labels() {
         $data['session'] = $this->session;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 900)
             redirect('welcome/permission_denied');
         $data['include'] = __FUNCTION__;
         $this->load->view('index', $data);
@@ -94,7 +94,7 @@ class Welcome extends CI_Controller {
 
     public function submit_labels() {
         $data['session'] = $this->session;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $result = $this->questions->submit_labels();
         echo $result;
@@ -103,7 +103,7 @@ class Welcome extends CI_Controller {
 //questions CRUD
     public function list_questions() {
         $data['session'] = $this->session;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $data['include'] = __FUNCTION__;
         $data['content'] = $this->questions->list_questions();
@@ -119,21 +119,21 @@ class Welcome extends CI_Controller {
 
     public function create_question() {
         $data['session'] = $this->session;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $data['include'] = __FUNCTION__;
         $this->load->view('index', $data);
     }
 
     public function submit_question() {
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         echo $this->questions->submit_question();
     }
 
     public function edit_question($id = null) {
         $data['session'] = $this->session;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $data['include'] = __FUNCTION__;
 
@@ -150,14 +150,14 @@ class Welcome extends CI_Controller {
     }
 
     public function update_question() {
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $this->questions->update_question();
     }
 
     public function delete_question() {
         $data['session'] = $this->session;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $id = $this->uri->segment(3);
         if ($this->questions->delete_question($id)) {
@@ -167,7 +167,7 @@ class Welcome extends CI_Controller {
     }
 
     public function list_all_questions() {
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         echo json_encode($this->questions->list_questions());
         //print_r($this->questions->list_questions());
@@ -176,7 +176,7 @@ class Welcome extends CI_Controller {
 //forms
     public function list_forms() {
         $data['session'] = $this->session;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $data['include'] = __FUNCTION__;
         $data['content'] = $this->forms->list_forms();
@@ -192,7 +192,7 @@ class Welcome extends CI_Controller {
 
     public function create_form() {
         $data['session'] = $this->session;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $data['content']['questions'] = null;
         $data['include'] = __FUNCTION__;
@@ -204,7 +204,7 @@ class Welcome extends CI_Controller {
 
     public function submit_form() {
         $data['session'] = $this->session;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $id = $this->forms->create_form();
         redirect('welcome/edit_form/'.$id);
@@ -212,7 +212,7 @@ class Welcome extends CI_Controller {
 
     public function copy_form() {
         $data['session'] = $this->session;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         
         $data['content']['questions'] = null;

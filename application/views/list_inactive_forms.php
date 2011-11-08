@@ -12,7 +12,7 @@ foreach ($content as $item) {
             echo "<li>Startdate: {$item['active_start']}</li>";
             echo "<li>Enddate: {$item['active_end']}</li>";
         echo '</ul><ul><li>';
-        if($item['hidden_type'] > 1) echo anchor("welcome/view_form/{$item['id']}", 'Show');
+        if($item['hidden_type'] > 1 || $item['form_type'] > 1) echo anchor("welcome/view_form/{$item['id']}", 'Show');
         echo '</li></ul>';
 
     echo '</div>';

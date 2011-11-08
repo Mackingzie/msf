@@ -6,9 +6,9 @@
   echo '</pre>';
   die;
  */
-$content[0]['form_type'] == 1 ? $sel1 = "Questioner" : $sel1 = '';
+$content[0]['form_type'] == 1 ? $sel1 = "Exams" : $sel1 = '';
 $content[0]['form_type'] == 2 ? $sel2 = "Regular" : $sel2 = '';
-$content[0]['form_type'] == 3 ? $sel3 = "Exams" : $sel3 = '';
+$content[0]['form_type'] == 3 ? $sel3 = "Questioner" : $sel3 = '';
 $content[0]['form_type'] == 4 ? $sel4 = "Email" : $sel4 = '';
 
 $content[0]['hidden_type'] == 1 ? $hidden1 = "Never" : $hidden1 = '';
@@ -42,11 +42,12 @@ if ($content['tags']) {
 }
 
 echo '<ul class="form_menu">';
-echo '<li>' . anchor('welcome/list_forms', 'Forms list') . '</li>
-        <li>' . anchor("welcome/edit_form/{$content[0]['id']}", 'Edit') . '</li>';
+echo '<li>' . anchor('welcome/list_forms', 'Forms list') . '</li>';
        if ($content['questions']) {
            echo '<li>' . anchor("welcome/send_form_to_users/{$content[0]['id']}", 'Use') . '</li>';
        }
+        echo '<li>'.anchor("welcome/copy_form/{$content[0]['id']}", 'Clone') .'</li>';
+
 echo '</ul></div>';
 
 

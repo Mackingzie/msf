@@ -14,8 +14,9 @@ foreach ($content as $item) {
         echo '</ul>';
 
         echo'<ul class="form_menu">
-                <li>'. anchor("welcome/answer_form/{$item['id']}", 'Answer'). ' ' . anchor("welcome/delete_active_form/" . $item['id'] . "", "Delete") . '</li>
-            </ul>';
+                <li>'. anchor("welcome/answer_form/{$item['id']}", 'Answer'). ' ' . anchor("welcome/delete_active_form/" . $item['id'] . "", "Delete") . '</li>';
+                if($item['hidden_type'] > 1 || $item['form_type'] == 3) echo '<li>'.anchor("welcome/view_form/{$item['id']}", 'Show').'</li>';
+            echo '</ul>';
 
     echo '</div>';
 }

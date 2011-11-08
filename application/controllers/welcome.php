@@ -214,13 +214,12 @@ class Welcome extends CI_Controller {
         $data['session'] = $this->session;
         if ($this->session->userdata('user_level') > 1000)
             redirect('welcome/permission_denied');
+        
         $data['content']['questions'] = null;
-        $data['include'] = "edit_form";
+        
         $id = $this->uri->segment(3);
-        if (!$this->forms->copy_form($id)) {
-            redirect("welcome/list_form");
-        }
-
+        $this->forms->copy_form($id);
+        
         $data['content'] = $this->forms->view_form($id);
         $i = 0;
         foreach ($data['content'][0] as $item_key => $item_value) {
@@ -237,11 +236,11 @@ class Welcome extends CI_Controller {
 
         $data['content']['all_questions'] = $this->questions->list_questions();
 
-
+        
         foreach ($data['content'][0] as $item) {
             $data['content']['tags'] = $this->tags->retrieve_form_tags($item['id']);
         }
-        redirect("welcome/edit_form/".$id);
+        redirect("welcome/edit_form/$id");
     }
 
     public function view_form($id = null) {

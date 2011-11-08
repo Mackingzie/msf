@@ -35,9 +35,9 @@ class forms extends CI_Model {
 
         $query = $this->db->get_where('forms', array('id' => $id));
         $form_data = $query->result_array();
-
+        
         $data = array(
-            'author_id' => $form_data[0]['author_id'],
+            'author_id' => $this->session->userdata('id'),
             'title' => $form_data[0]['title'],
             'form_type' => $form_data[0]['form_type'],
             'timer' => $form_data[0]['timer'],
@@ -45,21 +45,19 @@ class forms extends CI_Model {
             'active_end' => $form_data[0]['active_end'],
             'hidden_type' => $form_data[0]['hidden_type']
         );
-
+       
+        
         $i = 1;
-        foreach ($form_data[0] as $item) {
-            if ($item['q' . $i])
-                $data['q' . $i] = $item['q' . $i];
-
-            if ($item['qtype' . $i])
-                $data['qtype' . $i] = $item['qtype' . $i];
+        foreach ($form_data as $item) {
+            if ($item['q' . $i]) $data['q' . $i] = $item['q' . $i];
+            //if ($item['qpoints' . $i]) $data['qpoints' . $i] = $item['qpoints' . $i];
+            
             $i++;
-            if ($i == 200
-
-                )exit;
+            if ($i == 200)exit;
         }
+        
         $this->db->insert('forms', $data);
-        return true;
+        
     }
 
     function create_form() {
@@ -117,11 +115,10 @@ class forms extends CI_Model {
             $y = $item->order;
             $i++;
         }
-        print($y);
         for ($z = $y + 1; $z <= 199; $z++) {
             $data["q$z"] = NULL;
         }
-        print(" z:" . $z);
+        
 
         $this->db->update('forms', $data, array('id' => $id));
     }
@@ -141,12 +138,11 @@ class forms extends CI_Model {
             $y = $item->order;
             $i++;
         }
-        print($y);
+        
         for ($z = $y + 1; $z <= 199; $z++) {
             $data["q_points$z"] = NULL;
         }
-        print(" z:" . $z);
-
+        
         $this->db->update('forms', $data, array('id' => $id));
     }
 

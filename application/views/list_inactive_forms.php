@@ -11,7 +11,9 @@ foreach ($content as $item) {
             echo "<li>Timer: {$item['timer']}</li>";
             echo "<li>Startdate: {$item['active_start']}</li>";
             echo "<li>Enddate: {$item['active_end']}</li>";
-        echo '</ul>';
+        echo '</ul><ul><li>';
+        if($item['hidden_type'] > 1) echo anchor("welcome/view_form/{$item['id']}", 'Show');
+        echo '</li></ul>';
 
     echo '</div>';
 }

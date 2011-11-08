@@ -1,12 +1,11 @@
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#form_submit").click(function(){
+        $("#edit_form").click(function(){
             var title = $("input[name=title]").val();
             var form_type = $("input[name=form_type]:radio:checked").val();
             var hidden_type = $("input[name=hidden_type]:radio:checked").val();
             var timer = $("input[name=timer]").val();
             var active_start = $("input[name=active_start]").val();
-             var author_id = $("hidden[name=author_id]").val();
             var active_end = $("input[name=active_end]").val();
 
             var id = $('.form_header').attr('action').match(/([0-9]+)+/g);
@@ -16,7 +15,7 @@
                 type: "POST",
                 url: target,
                 dataType: "json",
-                data: "title="+title+"&form_type="+form_type+"&hidden_type="+hidden_type+"&timer="+timer+"&active_start="+active_start+"&active_end="+active_end+"&author_id="+author_id,
+                data: "title="+title+"&form_type="+form_type+"&hidden_type="+hidden_type+"&timer="+timer+"&active_start="+active_start+"&active_end="+active_end,
                 cache:false
             });
             return false;
@@ -63,7 +62,7 @@ echo form_input('timer', $content[0]['timer']) . 'Timer example <i>hours:mins</i
 echo form_input('active_start', $content[0]['active_start']) . 'Startdate<br/>';
 echo form_input('active_end', $content[0]['active_end']) . 'Enddate<br/>';
 
-echo anchor('welcome/list_forms', 'Back list') . ' ' . form_submit('submit', 'Save form', 'id="form_submit"');
+echo anchor('welcome/list_forms', 'Back list') . ' ' . form_submit('submit', 'Save form', 'id="edit_form"') .' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete form') .' '. anchor("welcome/view_form/{$content[0]['id']}", 'Show');
 
 if ($content['tags']) {
     echo 'Tags<ul class="tags">';
@@ -74,7 +73,7 @@ if ($content['tags']) {
 }
 echo "</div>";
 
-echo' <ul class="form_menu"><li>' . anchor("welcome/copy_form/{$content[0]['id']}", 'Create copy') . ' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete form') . anchor("welcome/view_form/{$content[0]['id']}", 'Show').'</li></ul>';
+
 echo '</div>';
 
 echo '<p id="create_question"class="msg_head">Add Questions</p>';
@@ -210,7 +209,5 @@ if ($content['all_questions']) {
 echo '</div></div>';
 
 echo "<div id='content_footer'>";
-echo form_submit('submit', 'Save form');
-echo form_close();
 echo '</div>';
 ?>

@@ -10,6 +10,7 @@ foreach ($content as $item) {
         echo '<ul>';
             echo "<li>Title: {$item['title']}</li><br/>";
             echo "<li>Author: {$item['author_id']}</li>";
+            echo "<li>Created: {$item['created']}</li><br/>";
             echo "<li>Timer: {$item['timer']}</li>";
             echo "<li>Startdate: {$item['active_start']}</li>";
             echo "<li>Enddate: {$item['active_end']}</li>";
@@ -18,7 +19,6 @@ foreach ($content as $item) {
         echo'<ul class="form_menu">
                 <li>' . anchor("welcome/view_form/{$item['id']}", 'Show')
                     . ' ' . anchor("welcome/copy_form/{$item['id']}", 'Clone')
-                    . ' ' . anchor("welcome/edit_form/{$item['id']}", 'Edit')
                     . ' ' . anchor("welcome/delete_form/{$item['id']}", 'Delete')
                              . ' ' . anchor("welcome/send_form_to_users/{$item['id']}", 'Use')
                 . '</li>

@@ -13,6 +13,7 @@
 class forms extends CI_Model {
 
     function list_forms() {
+        $this->db->order_by('forms.created', 'DESC');
         $query = $this->db->get('forms');
         return $query->result_array();
     }
@@ -65,7 +66,7 @@ class forms extends CI_Model {
         $form_data[0] = $_POST;
 
         $data = array(
-            'author_id' => $form_data[0]['author_id'],
+            'author_id' => $this->session->userdata('id'),
             'title' => $form_data[0]['title'],
             'form_type' => $form_data[0]['form_type'],
             'timer' => $form_data[0]['timer'],
@@ -73,9 +74,13 @@ class forms extends CI_Model {
             'active_end' => $form_data[0]['active_end'],
             'hidden_type' => $form_data[0]['hidden_type']
         );
-
-
         $this->db->insert('forms', $data);
+        //return id
+        $this->db->select('id');
+        $query = $this->db->get_where('forms', array('title' => $form_data[0]['title'], 'author_id' => $this->session->userdata('id')));
+        foreach ($query->result_array() as $item){
+            return $item['id'];
+        }
     }
 
     function update_form($id) {
@@ -173,6 +178,7 @@ class forms extends CI_Model {
     function list_active_forms($id) {
         $attr = array('forms_active.user_id' => $id, 'forms_active.active' => 1);
         $this->db->select('forms.id, author_id, active_start, active_end, timer, created, title, hidden_type, form_type, sender');
+        $this->db->order_by('forms.active_start', 'ASC');
         $this->db->where($attr);
         $this->db->from('forms');
         $this->db->join('forms_active', 'forms_active.form_id = forms.id');
@@ -184,6 +190,7 @@ class forms extends CI_Model {
     function list_inactive_forms($id) {
         $attr = array('forms_active.user_id' => $id, 'forms_active.active' => 0);
         $this->db->select('forms.id, author_id, active_start, active_end, timer, created, title, hidden_type, form_type, sender');
+        $this->db->order_by('forms.active_end', 'DESC');
         $this->db->where($attr);
         $this->db->from('forms');
         $this->db->join('forms_active', 'forms_active.form_id = forms.id');

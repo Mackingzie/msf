@@ -183,6 +183,4 @@ echo "</div>";
 echo "<div class='column' id='column2'>";
 echo '</div></div>';
 
-echo "<div id='content_footer'>";
-echo '</div>';
 ?>

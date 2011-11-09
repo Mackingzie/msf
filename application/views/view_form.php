@@ -140,7 +140,4 @@ if ($content['questions']) {
 
 
 echo '</dl></div>';
-
-echo "<div id='content_footer'>";
-echo '</div>';
 ?>

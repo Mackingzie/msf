@@ -53,8 +53,8 @@ class Users extends CI_Model {
     function register() {
 
         $email = $_POST['email'];
-        $password = get_new_password();
-        $a_key = get_hash();
+        $password = $_POST['password']; //$this->get_new_password();
+        $a_key = 1; //$this->get_hash();
 
         $data = array(
             'email' => $email,
@@ -62,17 +62,24 @@ class Users extends CI_Model {
             'password' => $password,
             'a_key' => $a_key
         );
-        print_r($data);
+
         $this->db->insert('users', $data);
 
-        $query = $this->db->get_where('users', array('email' => $email));
+        $query = $this->db->get_where('users', array('email' => $email, 'password' => $password, 'a_key' => 1));
         if ($query) {
-            $newdata = array(
-                'email' => $email,
-                'logged_in' => 1
-            );
+            foreach ($query->result() as $item) {
 
-            $this->session->set_userdata($newdata);
+
+                $newdata = array(
+                    'email' => $email,
+                    'logged_in' => 1,
+                    'user_level' => $item->user_level,
+                    'id' => $item->id
+                );
+
+                $this->session->set_userdata($newdata);
+            }
+            return true;
         }
         /*
           foreach ($query->result_array() as $item) {
@@ -129,9 +136,10 @@ class Users extends CI_Model {
         $this->db->where('users_has_groups.user_id', $id);
         $this->db->order_by('users_has_groups.group_id');
         $query = $this->db->get();
-       
+
         return $query->result_array();
     }
+
     function list_users_by_id($id) {
         $this->db->select('email, id');
         $this->db->where('users.id', $id);

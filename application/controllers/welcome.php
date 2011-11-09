@@ -23,7 +23,8 @@ class Welcome extends CI_Controller {
     public function index() {
         $data['session'] = $this->session;
         $data['include'] = 'start';
-        
+        print_r($this->session->userdata);
+        //die;
         $this->load->view('index', $data);
     }
 
@@ -44,9 +45,11 @@ class Welcome extends CI_Controller {
     // create a new user
     public function register() {
         $data['session'] = $this->session;
-        $this->users->register();
-
-        redirect('welcome/user_home');
+        if($this->users->register()){
+            redirect('welcome/user_home');
+        }else{
+            redirect('welcome/index');
+        }
     }
 
     public function login() {
@@ -295,6 +298,8 @@ class Welcome extends CI_Controller {
     public function edit_form($id) {
         $data['session'] = $this->session;
         $data['include'] = __FUNCTION__;
+        if ($this->session->userdata('user_level') > 800)
+            redirect('welcome/permission_denied');
         if (!$id)
             $id = $this->uri->segment(3);
 
@@ -324,21 +329,21 @@ class Welcome extends CI_Controller {
     }
 
     public function update_questions_to_form() {
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $id = $this->uri->segment(3);
         $this->forms->submit_questions_to_form($id);
     }
 
     public function update_points_to_form() {
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $id = $this->uri->segment(3);
         $this->forms->submit_points_to_form($id);
     }
 
     public function update_form($id) {
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $this->forms->update_form($id);
         $this->forms->submit_questions_to_form($id);
@@ -348,7 +353,7 @@ class Welcome extends CI_Controller {
         $data['content']['users'] = null;
         $data['session'] = $this->session;
         $data['include'] = __FUNCTION__;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 900)
             redirect('welcome/permission_denied');
         $data['include'] = __FUNCTION__;
         if (!$id)
@@ -387,7 +392,7 @@ class Welcome extends CI_Controller {
         $data['content']['users'] = null;
         $data['session'] = $this->session;
         $data['include'] = __FUNCTION__;
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 900)
             redirect('welcome/permission_denied');
 
 
@@ -415,7 +420,7 @@ class Welcome extends CI_Controller {
     }
 
     public function submit_form_to_users() {
-        if ($this->session->userdata('user_level') > 1000)
+        if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
         $form_id = $this->uri->segment(3);
         

@@ -17,7 +17,7 @@
 			<div class="left">
 				<!-- Login Form -->
 				<form class="clearfix" action="/msf/index.php/welcome/login/" method="post">
-					<h1>Member Login</h1>
+					<h3>Member Login</h3>
 					<label class="grey" for="email">Email:</label>
 					<input class="field" type="text" name="email" id="email" value="" size="23" />
 					<label class="grey" for="password">Password:</label>
@@ -29,14 +29,12 @@
 			</div>
 			<div class="left right">
 				<!-- Register Form -->
-				<form action="register" method="post">
-					<h1>Not a member yet? Sign Up!</h1>
-
-					<label class="grey" for="username">Username:</label>
-					<input class="field" type="text" name="username" id="username" value="" size="23" />
-					<label class="grey" for="email">Email:</label>
-					<input class="field" type="text" name="email" id="email" size="23" />
-					<label>A password will be e-mailed to you.</label>
+				<form action="/msf/index.php/welcome/register/" method="post">
+					<h3>Not a member yet? Sign Up!</h3>
+<label class="grey" for="email">Email:</label>
+					<input class="field" type="text" name="email" id="email" value="" size="23" />
+					<label class="grey" for="password">Password:</label>
+					<input class="field" type="password" name="password" id="password" size="23" />
 					<input type="submit" name="submit" value="Register" class="bt_register" />
 				</form>
 			</div>

@@ -2,7 +2,7 @@
 
 echo "<div id='header'><img src='".base_url()."img/msf_header.jpg' alt='MSF' />";
 echo "<ul id='menu'>";
-if($this->session->userdata('id')){
+if ($this->session->userdata('user_level') < 1000){
 echo "<li>".anchor('welcome/', 'Home')."</li>";
 echo "<li>".anchor('welcome/list_questions', 'Questions & Labels')."</li>";
 echo "<li>".anchor('welcome/list_forms', 'Formslist')."</li>";

@@ -60,7 +60,7 @@
 .question, .forms, .label, .default_label{
     border-radius: 15px;
     padding: 5px;
-    background-color: #4F5155;
+    background-color:#4F5155;
 }
 .question, .forms, .label, .default_label{
     height: auto;

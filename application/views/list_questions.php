@@ -22,8 +22,9 @@
 </script>
 <?php
 echo '<div>';
-echo '<h2>Questions & Labels</h2>';
-echo anchor('welcome/create_question', 'Create question') . ' ' . anchor('welcome/create_labels', 'Create label') . '<br/><br/>';
+echo '<h2 >Questions & Labels</h2>';
+$attributes = array('class' => 'myButton');
+echo anchor('welcome/create_question', 'Create question', $attributes) . ' ' . anchor('welcome/create_labels', 'Create label', $attributes) . '<br/><br/>';
 echo '</div>';
 echo "<div id='column2'>";
 echo "Sort by: <a href='#' id='sortQuestions'>Questions</a><a href='#' id='sortLabels'>Labels</a><a href='#' id='sortAll'>Show all</a>";

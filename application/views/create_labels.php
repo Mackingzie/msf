@@ -33,7 +33,11 @@
     });
 
 </script>
-
+<?php
+echo '<h2 >Create Labels</h2>';
+$attributes = array('class' => 'myButton');
+echo anchor('welcome/create_question', 'Create question', $attributes) . '<br/><br/>';
+?>
 <div id="create_label">
     <form action="welcome/submit_labels" method="post">
         <ul class="Label">

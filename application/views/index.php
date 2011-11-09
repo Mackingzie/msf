@@ -18,6 +18,7 @@
     <link href="<?php echo base_url() ?>css/layout.css" rel="stylesheet" />
     <link href="<?php echo base_url() ?>css/design.css" rel="stylesheet" />
     <link href="<?php echo base_url() ?>css/text.css" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>css/menu_style.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo base_url() ?>css/style.css" type="text/css" >
     <link rel="stylesheet" href="<?php echo base_url() ?>css/slide.css" type="text/css" >
     <link rel="stylesheet" href="<?php echo base_url() ?>css/login_style.css" type="text/css" >
@@ -28,6 +29,8 @@
     <script src="<?php echo base_url() ?>js/form.js" type="text/javascript"></script>
     <!-- Sliding effect -->
     <script src="<?php echo base_url() ?>js/slide.js" type="text/javascript"></script>
+
+ 
 
     <script type="text/javascript">
         

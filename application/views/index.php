@@ -89,24 +89,25 @@
 <body>
 
     <?php
-    
+    /*
     echo '<pre>';
-    //print_r($session->userdata);
+    print_r($session->userdata);
      echo '</pre>';
-     
+     */
     
-    $this->load->view('login');
+$this->load->view('login');
    
-    echo '<div id="site_wrapper">';
+echo '<div id="site_wrapper">';
 
     $this->load->view('header');
+
     echo '<div id="content">';
-    $this->load->view($include);
-    echo '</div>
-              <div id="footer">';
-    $this->load->view('footer');
-    echo '</div>
-          </div>';
+        $this->load->view($include);
+    echo '</div>';
+    echo '<div id="footer">';
+        $this->load->view('footer');
+    echo '</div>';
+echo '</div>';
     ?>
 
 </body>

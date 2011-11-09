@@ -14,8 +14,18 @@ $content[0]['form_type'] == 4 ? $sel4 = "Email" : $sel4 = '';
 $content[0]['hidden_type'] == 1 ? $hidden1 = "Never" : $hidden1 = '';
 $content[0]['hidden_type'] == 2 ? $hidden2 = "After Enddate" : $hidden2 = '';
 $content[0]['hidden_type'] == 3 ? $hidden3 = "Allways" : $hidden3 = '';
+$attributes = array('class' => 'myButton');
+echo '<ul class="form_menu">';
+echo '<li>' . anchor('welcome/list_forms', 'Forms list', $attributes) . '</li>';
+       if ($content['questions']) {
+           echo '<li>' . anchor("welcome/send_form_to_users/{$content[0]['id']}", 'Use', $attributes) . '</li>';
+       }
+        echo '<li>'.anchor("welcome/copy_form/{$content[0]['id']}", 'Clone', $attributes) .'</li>';
+
+echo '</ul>';
 
 echo '<div  id="view_form">';
+
 echo '<div class="form_header">';
 
 echo "Title: {$content[0]['title']}<br/>";
@@ -41,14 +51,7 @@ if ($content['tags']) {
     echo '</ul>';
 }
 
-echo '<ul class="form_menu">';
-echo '<li>' . anchor('welcome/list_forms', 'Forms list') . '</li>';
-       if ($content['questions']) {
-           echo '<li>' . anchor("welcome/send_form_to_users/{$content[0]['id']}", 'Use') . '</li>';
-       }
-        echo '<li>'.anchor("welcome/copy_form/{$content[0]['id']}", 'Clone') .'</li>';
-
-echo '</ul></div>';
+echo '</div>';
 
 
 echo "<div id='questions_view'><dl>";
@@ -137,7 +140,4 @@ if ($content['questions']) {
 
 
 echo '</dl></div>';
-
-echo "<div id='content_footer'>";
-echo '</div>';
 ?>

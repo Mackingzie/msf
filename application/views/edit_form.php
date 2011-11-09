@@ -47,7 +47,8 @@ $content[0]['form_type'] == 4 ? $sel4 = "TRUE" : $sel4 = '';
 $content[0]['hidden_type'] == 1 ? $hidden1 = "TRUE" : $hidden1 = '';
 $content[0]['hidden_type'] == 2 ? $hidden2 = "TRUE" : $hidden2 = '';
 $content[0]['hidden_type'] == 3 ? $hidden3 = "TRUE" : $hidden3 = '';
-
+$attributes = array('class' => 'myButton');
+echo anchor('welcome/list_forms', 'Back list', $attributes) . ' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete form', $attributes) . ' ' . anchor("welcome/view_form/{$content[0]['id']}", 'Show', $attributes);
 echo '<div class="msg_list">';
 echo '<p class="msg_head">Form preferences</p>';
 echo '<div class="msg_body">';
@@ -70,8 +71,8 @@ echo 'Fill answer alternatives (will automatically be randomized)<br/>';
 echo form_input('timer', $content[0]['timer']) . 'Timer example <i>hours:mins</i><br/>';
 echo form_input('active_start', $content[0]['active_start']) . 'Startdate<br/>';
 echo form_input('active_end', $content[0]['active_end']) . 'Enddate<br/>';
+echo form_submit('submit', 'Save form', 'id="edit_form"');
 
-echo anchor('welcome/list_forms', 'Back list') . ' ' . form_submit('submit', 'Save form', 'id="edit_form"') . ' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete form') . ' ' . anchor("welcome/view_form/{$content[0]['id']}", 'Show');
 
 if ($content['tags']) {
     echo 'Tags<ul class="tags">';
@@ -182,6 +183,4 @@ echo "</div>";
 echo "<div class='column' id='column2'>";
 echo '</div></div>';
 
-echo "<div id='content_footer'>";
-echo '</div>';
 ?>

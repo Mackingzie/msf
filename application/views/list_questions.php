@@ -38,7 +38,7 @@ if ($content) {
                 break;
             case 2:
             case 3:
-                echo '<dl class="question dragbox" id="autoUpdate">
+                echo '<dl class="question dragbox">
                                 <dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt>
                                 <dd class="dragbox-content">
                                     <ul>

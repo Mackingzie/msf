@@ -117,6 +117,9 @@
 
 
 <?php
+echo '<h2 >Create Questions</h2>';
+$attributes = array('class' => 'myButton');
+echo anchor('welcome/create_labels', 'Create label', $attributes) . '<br/><br/>';
 echo '<div id="create_question">';
 echo 'Add Your question!';
 echo form_open('welcome/submit_question') . '<br/>';

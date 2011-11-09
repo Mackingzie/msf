@@ -1,6 +1,7 @@
 
 <?php
-echo "<div id='header'><img src='".base_url()."img/msf_header.jpg' alt='MSF' />";
+echo "<div id='header'>
+    <img src='".base_url()."img/msf_header.jpg' alt='MSF' />";
 echo "<ul id='menu'>";
 if ($this->session->userdata('user_level') < 1000){
 echo "<li>".anchor('welcome/', 'Home')."</li>";

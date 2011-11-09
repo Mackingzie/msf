@@ -6,8 +6,8 @@ $content[0]['form_type'] == 3 ? $sel3 = "Exams" : $sel3 = '';
 $content[0]['form_type'] == 4 ? $sel4 = "Email" : $sel4 = '';
 
 echo '<h2>Forms</h2>';
-
-echo anchor('welcome/create_form', 'Create new form') . '<br/><br/>';
+$attributes = array('class' => 'myButton');
+echo anchor('welcome/create_form', 'Create new form', $attributes) . '<br/><br/>';
 $i = 0;
 foreach ($content as $item) {
     echo '<div class="forms">';

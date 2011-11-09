@@ -100,9 +100,9 @@ if ($content['group'] != NULL) {
 
 
 echo '</div>';
-
+$attributes = array('class' => 'myButton');
 echo "<div id='content_footer'>";
-echo form_submit('submit', 'Send', 'id="form_submit');
+echo form_submit('submit', 'Send', 'id="form_submit', $attributes);
 echo form_close();
 echo '</div>';
 ?>

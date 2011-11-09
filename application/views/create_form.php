@@ -1,9 +1,14 @@
-
+<script>
+  $(document).ready(function() {
+    $("#datepicker").datepicker();
+  });
+  </script>
 <?php
 
 echo '<p class="msg_head">Form preferences</p>';
 
 $attributes = array('class' => 'myButton');
+$attr = array('id' => 'datepicker');
 echo form_open("welcome/submit_form") . '<br/>';
 echo '<ul><li>' . form_hidden('author_id', $session->userdata('id')) . '</li>';
 echo 'Title<br/>';
@@ -22,8 +27,8 @@ echo '<li>' . form_radio('hidden_type', '3') . 'Allways </li>';
 
 echo 'Fill answer alternatives (will automatically be randomized)</li>';
 echo '<li>' . form_input('timer', '') . 'Timer example <i>hours:mins</i></li>';
-echo '<li>' . form_input('active_start', date('Y-m-d')) . 'Startdate</li>';
-echo '<li>' . form_input('active_end', date('Y-m-d')) . 'Enddate</li>';
+echo '<li>' . form_input($attr,'active_start',  date('Y-m-d')) . 'Startdate</li>';
+echo '<li>' . form_input($attr,'active_end' ,date('Y-m-d')) . 'Enddate</li>';
 
 echo '<li>' . anchor('welcome/list_forms', 'Back to list', $attributes) . ' ' . form_submit('submit', 'Save form', 'id="create_form', $attributes) . '</li>';
 echo '</ul>';

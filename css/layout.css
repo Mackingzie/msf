@@ -23,7 +23,8 @@ body, *{
 }
 
 body {
-    background-color:#1A1A1A;
+    background-color:black;
+    background-image: url(../img/darkblue_background.jpg);
 }
 #site_wrapper{
     margin: 0 auto;
@@ -44,6 +45,8 @@ body {
     width: inherit;
     background:#414141;
     padding-top: 50px;
+    
+
 }
 #footer{
     float: left;

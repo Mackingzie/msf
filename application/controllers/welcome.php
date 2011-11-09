@@ -23,7 +23,8 @@ class Welcome extends CI_Controller {
     public function index() {
         $data['session'] = $this->session;
         $data['include'] = 'start';
-        
+
+
         $this->load->view('index', $data);
     }
 
@@ -82,7 +83,7 @@ class Welcome extends CI_Controller {
         /* recreates forms table */
         $this->forms->create_forms_table();
 
-        $this->load->'view('create_forms_table');
+        $this->load->view('create_forms_table');
     }
 
 //labels CRUD

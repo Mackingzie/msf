@@ -11,7 +11,7 @@
 	width: 960px;
         height: 40px;
 	margin: auto;
-       
+
 }
 
 #menu li {
@@ -19,12 +19,12 @@
     position: relative;
     margin-left: 5px;
     margin-top: 13px;
-    
+
 }
 
 
 
-   
+
 
 
 
@@ -48,7 +48,7 @@
 	z-index: 50;
         background: url("../img/menu.jpg");
         }
-        
+
 
 #sddm li
 {	margin: 0;
@@ -63,16 +63,16 @@
 	margin: 0,auto;
 	padding: 10px 60px ;
 	width: 10px;
-	
+
 	color: red;
 	text-align: center;
 	text-decoration: none}
 
 #sddm li a:hover{
-	
+
         color: white;
-        
-        
+
+
 
 }
 
@@ -98,7 +98,7 @@
 		font: 11px arial}
 
 	#sddm div a:hover
-	{	
+	{
 		color: white;
                /* border: 1px solid white;*/
         }

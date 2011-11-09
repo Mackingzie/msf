@@ -1,4 +1,4 @@
-/* 
+/*
     Document   : text
     Created on : 2011-okt-07, 13:53:02
     Author     : marcus
@@ -6,12 +6,12 @@
         Purpose of the stylesheet follows.
 */
 
-/* 
+/*
    TODO customize this sample style
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
-root { 
+root {
     display: block;
 }
 p, form, input, textarea, .label, dd, dt, li, a, .tags{

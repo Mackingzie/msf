@@ -23,7 +23,7 @@ ul#menu li
 	margin:0;
 	padding:0;
 }
-	
+
 ul#menu li a
 {
 	display:block;
@@ -33,14 +33,14 @@ ul#menu li a
 	font-weight:bold;
 	padding:8px 20px 0 20px;
 }
-	
+
 ul#menu li a:hover
-{	
+{
 	color:#0099CC;
 	height:22px;
 	background:transparent url(../img/nav_bg.png) 0px -30px no-repeat;
 }
-	
+
 
 ul#menu li a.current
 {

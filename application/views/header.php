@@ -1,14 +1,7 @@
 <?php
 
 echo "<div id='header'><img src='".base_url()."img/msf_header.jpg' alt='MSF' />";
-echo "<ul id='menu'>
-		<li><a href='' target='_self'>Home</a></li>
-		<li><a href='' target='_self'>Questions & Labels</a></li>
-		<li><a href='' target='_self'>Formslist</a></li>
-		<li><a href='' target='_self'>Create a group</a></li>
-		<li><a href='' target='_self'>List My Active forms</a></li>
-		<li><a href='' target='_self'>List My Inactive forms</a></li>
-</ul>";
+echo "<ul id='menu'>";
 if ($this->session->userdata('user_level') < 1000){
 echo "<li>".anchor('welcome/', 'Home')."</li>";
 echo "<li>".anchor('welcome/list_questions', 'Questions & Labels')."</li>";

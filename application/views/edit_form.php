@@ -1,26 +1,35 @@
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#edit_form").click(function(){
-            var title = $("input[name=title]").val();
-            var form_type = $("input[name=form_type]:radio:checked").val();
-            var hidden_type = $("input[name=hidden_type]:radio:checked").val();
-            var timer = $("input[name=timer]").val();
-            var active_start = $("input[name=active_start]").val();
-            var active_end = $("input[name=active_end]").val();
+    load_questions();
 
-            var id = $('.form_header').attr('action').match(/([0-9]+)+/g);
-            var target = '/msf/index.php/welcome/update_form/'+id;
-           
-            $.ajax({
-                type: "POST",
-                url: target,
-                dataType: "json",
-                data: "title="+title+"&form_type="+form_type+"&hidden_type="+hidden_type+"&timer="+timer+"&active_start="+active_start+"&active_end="+active_end,
-                cache:false
-            });
-            return false;
+    function load_questions(){
+        $.get('/msf/index.php/welcome/list_all_questions', function(result){
+            $('#column2').html(result);
         });
+    }
+
         
+    $("#edit_form").click(function(){
+    var title = $("input[name=title]").val();
+    var form_type = $("input[name=form_type]:radio:checked").val();
+    var hidden_type = $("input[name=hidden_type]:radio:checked").val();
+    var timer = $("input[name=timer]").val();
+    var active_start = $("input[name=active_start]").val();
+    var active_end = $("input[name=active_end]").val();
+
+    var id = $('.form_header').attr('action').match(/([0-9]+)+/g);
+    var target = '/msf/index.php/welcome/update_form/'+id;
+
+    $.ajax({
+    type: "POST",
+    url: target,
+    dataType: "json",
+    data: "title="+title+"&form_type="+form_type+"&hidden_type="+hidden_type+"&timer="+timer+"&active_start="+active_start+"&active_end="+active_end,
+    cache:false
+    });
+    return false;
+    });
+
     });
 </script>
 <?php
@@ -62,7 +71,7 @@ echo form_input('timer', $content[0]['timer']) . 'Timer example <i>hours:mins</i
 echo form_input('active_start', $content[0]['active_start']) . 'Startdate<br/>';
 echo form_input('active_end', $content[0]['active_end']) . 'Enddate<br/>';
 
-echo anchor('welcome/list_forms', 'Back list') . ' ' . form_submit('submit', 'Save form', 'id="edit_form"') .' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete form') .' '. anchor("welcome/view_form/{$content[0]['id']}", 'Show');
+echo anchor('welcome/list_forms', 'Back list') . ' ' . form_submit('submit', 'Save form', 'id="edit_form"') . ' ' . anchor("welcome/delete_form/{$content[0]['id']}", 'Delete form') . ' ' . anchor("welcome/view_form/{$content[0]['id']}", 'Show');
 
 if ($content['tags']) {
     echo 'Tags<ul class="tags">';
@@ -104,36 +113,56 @@ if ($content['questions'] != NULL) {
                 case 2: echo '<dl class="question dragbox"><dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt>
                             <dd class="dragbox-content">
                             <ul>';
-                                if($item['answ1']) echo '<li>' . form_radio($item['id'], '', $item['cansw1']).$item['answ1'] . '</li>';
-                                if($item['answ2']) echo '<li>' . form_radio($item['id'], '', $item['cansw2']).$item['answ2'] . '</li>';
-                                if($item['answ3']) echo '<li>' . form_radio($item['id'], '', $item['cansw3']).$item['answ3'] . '</li>';
-                                if($item['answ4']) echo '<li>' . form_radio($item['id'], '', $item['cansw4']).$item['answ4'] . '</li>';
-                                if($item['answ5']) echo '<li>' . form_radio($item['id'], '', $item['cansw5']).$item['answ5'] . '</li>';
-                                if($item['answ6']) echo '<li>' . form_radio($item['id'], '', $item['cansw6']).$item['answ6'] . '</li>';
-                                if($item['answ7']) echo '<li>' . form_radio($item['id'], '', $item['cansw7']).$item['answ7'] . '</li>';
-                                if($item['answ8']) echo '<li>' . form_radio($item['id'], '', $item['cansw8']).$item['answ8'] . '</li>';
-                                if($item['answ9']) echo '<li>' . form_radio($item['id'], '', $item['cansw9']).$item['answ9'] . '</li>';
-                                if($item['answ10']) echo '<li>' . form_radio($item['id'], '', $item['cansw10']).$item['answ10'] . '</li>';
-                       echo '</ul>
+                    if ($item['answ1'])
+                        echo '<li>' . form_radio($item['id'], '', $item['cansw1']) . $item['answ1'] . '</li>';
+                    if ($item['answ2'])
+                        echo '<li>' . form_radio($item['id'], '', $item['cansw2']) . $item['answ2'] . '</li>';
+                    if ($item['answ3'])
+                        echo '<li>' . form_radio($item['id'], '', $item['cansw3']) . $item['answ3'] . '</li>';
+                    if ($item['answ4'])
+                        echo '<li>' . form_radio($item['id'], '', $item['cansw4']) . $item['answ4'] . '</li>';
+                    if ($item['answ5'])
+                        echo '<li>' . form_radio($item['id'], '', $item['cansw5']) . $item['answ5'] . '</li>';
+                    if ($item['answ6'])
+                        echo '<li>' . form_radio($item['id'], '', $item['cansw6']) . $item['answ6'] . '</li>';
+                    if ($item['answ7'])
+                        echo '<li>' . form_radio($item['id'], '', $item['cansw7']) . $item['answ7'] . '</li>';
+                    if ($item['answ8'])
+                        echo '<li>' . form_radio($item['id'], '', $item['cansw8']) . $item['answ8'] . '</li>';
+                    if ($item['answ9'])
+                        echo '<li>' . form_radio($item['id'], '', $item['cansw9']) . $item['answ9'] . '</li>';
+                    if ($item['answ10'])
+                        echo '<li>' . form_radio($item['id'], '', $item['cansw10']) . $item['answ10'] . '</li>';
+                    echo '</ul>
                             </dd></dl>';
                     break;
                 case 3: echo '<dl class="question dragbox"><dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt>
                             <dd class="dragbox-content">
                             <ul>';
-                                if($item['answ1']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw1']).$item['answ1'] . '</li>';
-                                if($item['answ2']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw2']).$item['answ2'] . '</li>';
-                                if($item['answ3']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw3']).$item['answ3'] . '</li>';
-                                if($item['answ4']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw4']).$item['answ4'] . '</li>';
-                                if($item['answ5']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw5']).$item['answ5'] . '</li>';
-                                if($item['answ6']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw6']).$item['answ6'] . '</li>';
-                                if($item['answ7']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw7']).$item['answ7'] . '</li>';
-                                if($item['answ8']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw8']).$item['answ8'] . '</li>';
-                                if($item['answ9']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw9']).$item['answ9'] . '</li>';
-                                if($item['answ10']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw10']).$item['answ10'] . '</li>';
-                       echo '</ul>
+                    if ($item['answ1'])
+                        echo '<li>' . form_checkbox($item['id'], '', $item['cansw1']) . $item['answ1'] . '</li>';
+                    if ($item['answ2'])
+                        echo '<li>' . form_checkbox($item['id'], '', $item['cansw2']) . $item['answ2'] . '</li>';
+                    if ($item['answ3'])
+                        echo '<li>' . form_checkbox($item['id'], '', $item['cansw3']) . $item['answ3'] . '</li>';
+                    if ($item['answ4'])
+                        echo '<li>' . form_checkbox($item['id'], '', $item['cansw4']) . $item['answ4'] . '</li>';
+                    if ($item['answ5'])
+                        echo '<li>' . form_checkbox($item['id'], '', $item['cansw5']) . $item['answ5'] . '</li>';
+                    if ($item['answ6'])
+                        echo '<li>' . form_checkbox($item['id'], '', $item['cansw6']) . $item['answ6'] . '</li>';
+                    if ($item['answ7'])
+                        echo '<li>' . form_checkbox($item['id'], '', $item['cansw7']) . $item['answ7'] . '</li>';
+                    if ($item['answ8'])
+                        echo '<li>' . form_checkbox($item['id'], '', $item['cansw8']) . $item['answ8'] . '</li>';
+                    if ($item['answ9'])
+                        echo '<li>' . form_checkbox($item['id'], '', $item['cansw9']) . $item['answ9'] . '</li>';
+                    if ($item['answ10'])
+                        echo '<li>' . form_checkbox($item['id'], '', $item['cansw10']) . $item['answ10'] . '</li>';
+                    echo '</ul>
                             </dd></dl>';
                     break;
-                   
+
                 case 4: echo '<dl class="label dragbox"><dt id="' . $item['id'] . '"><h3>' . ' ' . $item['question'] . '</h3></dt><dd></dd></dl>';
                     break;
                 case 5: echo '<dl class="label dragbox"><dt id="' . $item['id'] . '"><h4>' . ' ' . $item['question'] . '</h4></dt><dd></dd></dl>';
@@ -143,7 +172,7 @@ if ($content['questions'] != NULL) {
                 case 7: echo '<dl class="label dragbox"><dt id="' . $item['id'] . '"><p><i>' . ' ' . $item['question'] . '</i></p></dt><dd></dd></dl>';
                     break;
                 case 8: echo '<dl class="default_label dragbox"><dt id="' . $item['id'] . '"><p>' . ' ' . $item['question'] . '</p></dt></dl>';
-                break;
+                    break;
             }
         }
     }
@@ -151,61 +180,6 @@ if ($content['questions'] != NULL) {
 
 echo "</div>";
 echo "<div class='column' id='column2'>";
-if ($content['all_questions']) {
-    foreach ($content['all_questions'] as $item) {
-
-        switch ($item['type']) {
-            case 1: echo '<dl class="question dragbox">
-                        <dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt>
-                        <dd class="dragbox-content">' . $item['answ1'] . '</dd>
-                    </dl>';
-                break;
-             case 2: echo '<dl class="question dragbox"><dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt>
-                            <dd class="dragbox-content">
-                            <ul>';
-                                if($item['answ1']) echo '<li>' . form_radio($item['id'], '', $item['cansw1']).$item['answ1'] . '</li>';
-                                if($item['answ2']) echo '<li>' . form_radio($item['id'], '', $item['cansw2']).$item['answ2'] . '</li>';
-                                if($item['answ3']) echo '<li>' . form_radio($item['id'], '', $item['cansw3']).$item['answ3'] . '</li>';
-                                if($item['answ4']) echo '<li>' . form_radio($item['id'], '', $item['cansw4']).$item['answ4'] . '</li>';
-                                if($item['answ5']) echo '<li>' . form_radio($item['id'], '', $item['cansw5']).$item['answ5'] . '</li>';
-                                if($item['answ6']) echo '<li>' . form_radio($item['id'], '', $item['cansw6']).$item['answ6'] . '</li>';
-                                if($item['answ7']) echo '<li>' . form_radio($item['id'], '', $item['cansw7']).$item['answ7'] . '</li>';
-                                if($item['answ8']) echo '<li>' . form_radio($item['id'], '', $item['cansw8']).$item['answ8'] . '</li>';
-                                if($item['answ9']) echo '<li>' . form_radio($item['id'], '', $item['cansw9']).$item['answ9'] . '</li>';
-                                if($item['answ10']) echo '<li>' . form_radio($item['id'], '', $item['cansw10']).$item['answ10'] . '</li>';
-                       echo '</ul>
-                            </dd></dl>';
-                    break;
-                case 3: echo '<dl class="question dragbox"><dt id="' . $item['id'] . '">' . ' ' . $item['question'] . '</dt>
-                            <dd class="dragbox-content">
-                            <ul>';
-                                if($item['answ1']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw1']).$item['answ1'] . '</li>';
-                                if($item['answ2']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw2']).$item['answ2'] . '</li>';
-                                if($item['answ3']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw3']).$item['answ3'] . '</li>';
-                                if($item['answ4']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw4']).$item['answ4'] . '</li>';
-                                if($item['answ5']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw5']).$item['answ5'] . '</li>';
-                                if($item['answ6']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw6']).$item['answ6'] . '</li>';
-                                if($item['answ7']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw7']).$item['answ7'] . '</li>';
-                                if($item['answ8']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw8']).$item['answ8'] . '</li>';
-                                if($item['answ9']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw9']).$item['answ9'] . '</li>';
-                                if($item['answ10']) echo '<li>' . form_checkbox($item['id'], '', $item['cansw10']).$item['answ10'] . '</li>';
-                       echo '</ul>
-                            </dd></dl>';
-                    break;
-                   
-            case 4: echo '<dl class="label dragbox"><dt id="' . $item['id'] . '"><h3>' . ' ' . $item['question'] . '</h3></dt><dd></dd></dl>';
-                break;
-            case 5: echo '<dl class="label dragbox"><dt id="' . $item['id'] . '"><h4>' . ' ' . $item['question'] . '</h4></dt><dd></dd></dl>';
-                break;
-            case 6: echo '<dl class="label dragbox"><dt id="' . $item['id'] . '"><i>' . ' ' . $item['question'] . '</i></dt><dd></dd></dl>';
-                break;
-            case 7: echo '<dl class="label dragbox"><dt id="' . $item['id'] . '"><p><i>' . ' ' . $item['question'] . '</i></p></dt><dd></dd></dl>';
-                break;
-            case 8: echo '<dl class="default_label dragbox"><dt id="' . $item['id'] . '"><p>' . ' ' . $item['question'] . '</p></dt></dl>';
-                break;
-        }
-    }
-}
 echo '</div></div>';
 
 echo "<div id='content_footer'>";

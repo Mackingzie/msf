@@ -1,5 +1,12 @@
 $(document).ready(function(){
+    //load all questions
+    
 
+    function load_questions(){
+        $.get('/msf/index.php/welcome/list_all_questions', function(result){
+            $('#column2').html(result);
+        });
+    }
 
     //hide the all of the element with class msg_body
     $(".msg_body").hide();
@@ -60,6 +67,7 @@ $(document).ready(function(){
         stop: function(event, ui){
             //ui.item.css({'top':'0','left':'0'}); //Opera fix
             //if(!$.browser.mozilla && !$.browser.safari)
+            load_questions();
             updateWidgetData();
         }
     })

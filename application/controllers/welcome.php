@@ -23,7 +23,7 @@ class Welcome extends CI_Controller {
     public function index() {
         $data['session'] = $this->session;
         $data['include'] = 'start';
-
+        
 
         $this->load->view('index', $data);
     }
@@ -172,8 +172,8 @@ class Welcome extends CI_Controller {
     public function list_all_questions() {
         if ($this->session->userdata('user_level') > 800)
             redirect('welcome/permission_denied');
-        echo json_encode($this->questions->list_questions());
-        //print_r($this->questions->list_questions());
+        $data['content'] = $this->questions->list_questions();
+        $this->load->view('list_all_questions', $data);
     }
 
 //forms

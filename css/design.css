@@ -59,15 +59,10 @@
 }
 .question, .forms, .label, .default_label{
     border-radius: 15px;
-    padding: 5px;
     background-color:#4F5155;
-     border-top-width: 4px;
-    border-bottom-width: 4px;
-    border-top-style: double;
-    border-bottom-style: double;
     border-top-color:#000000;
     border-bottom-color:#c4c2c2;
-    padding: 8px 0px;
+    padding: 8px 0px 20px 0;
 }
 .question, .forms, .label, .default_label{
     height: auto;
@@ -76,6 +71,7 @@
 }
 .dragbox-content{
     height: auto;
+    display: hidden;
 }
 
 .forms ul li{
@@ -175,11 +171,7 @@ textarea{
     clear: both;
 }
 .form_header{
-    padding: 10px;
-    width: 940px;
-    float: left;
-    position: relative;
-    background: #999;
+    
 }
 .form_header ul{
     margin-right: 10px;

@@ -12,12 +12,6 @@
 */
 
 
-#content_footer{
-    clear: both;
-    width: 800px;
-    height: 100px;
-}
-
 #column1{
     margin: 10px 10px 0 -10px;
 }
@@ -47,6 +41,7 @@
 .column  .placeholder, .gcolumn  .placeholder, .user_column placeholder{
 	background: #f0f0f0;
 	border:1px dashed #666;
+        width: 400px;
 }
 #questions_view{
     width: inherit;
@@ -71,7 +66,7 @@
 }
 .dragbox-content{
     height: auto;
-    display: hidden;
+    
 }
 
 .forms ul li{
